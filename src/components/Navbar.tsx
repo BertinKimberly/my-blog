@@ -32,9 +32,9 @@ const Navbar = () => {
             }  md:flex gap-5`}
          >
             <Link href='/'>Home</Link>
-            <Link href='/'>About</Link>
-            <Link href='/'>Contact</Link>
-            <Link href='/'>Posts</Link>
+            <Link href='/about'>About</Link>
+            <Link href='/contact'>Contact</Link>
+            <Link href='/posts'>Posts</Link>
          </div>
          <div
             className='md:hidden block'
