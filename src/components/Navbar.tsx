@@ -9,7 +9,7 @@ const Navbar = () => {
       setIsToggleMenu((prev) => !prev);
    };
    return (
-      <nav className='container h-[100px] mx-auto flex items-center justify-between relative'>
+      <nav className=' h-[100px] mx-auto flex items-center justify-between relative'>
          <div>
             <Link href='/'>BERTIN</Link>
          </div>
