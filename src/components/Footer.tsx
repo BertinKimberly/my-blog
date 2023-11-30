@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
    const Links = [
@@ -106,7 +107,18 @@ const Footer = () => {
                </div>
             </div>
          </div>
-         <div className='flex w-full items-center justify-center'>
+         <div className='flex w-full items-center justify-center flex-col'>
+            <p className='flex text-center items-center justify-center p-3 gap-4'>
+               <Link href=''>
+                  <FaFacebook />
+               </Link>
+               <Link href=''>
+                  <FaLinkedin />
+               </Link>
+               <Link href=''>
+                  <FaInstagram />
+               </Link>
+            </p>
             <hr className='w-3/4 ' />
          </div>
 
