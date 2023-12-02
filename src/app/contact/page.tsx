@@ -1,7 +1,6 @@
 import React from "react";
 import { FaFacebookMessenger, FaMailBulk, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
-import { MdChatBubble } from "react-icons/md";
 import Layout from "@/components/Layout";
 const Contact = () => {
    return (
