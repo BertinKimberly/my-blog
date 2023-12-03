@@ -97,11 +97,11 @@ const Footer = () => {
                      BERTIN
                   </Link>
                   <p className='leading-7 text-sm mt-3'>
-                     <span>The gospel video streaming app</span>
+                     <span>Bertin's personal blog</span>
                      <br />
                      <span>Kigali-Rwanda</span>
                      <br />
-                     <span>Email: reviveg100@gmail.com</span>
+                     <span>Email: iradukundabertin082@gmail.com</span>
                      <br />
                   </p>
                </div>
