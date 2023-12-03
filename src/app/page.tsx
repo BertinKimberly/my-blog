@@ -8,7 +8,7 @@ import Link from "next/link";
 const Home = () => {
    return (
       <Layout>
-         <div className='min-h-screen w-full '>
+         <div className='min-h-screen w-full pt-6'>
             <div className=''>
                <h2 className='text-center py-3'>
                   What is going On in the world

@@ -91,7 +91,3 @@ model Comment {
   post      Post     @relation(fields: [postSlug], references: [slug])
 }
 
-model Test{
-  id String @id @default(cuid()) @map("_id")
-  txt String
-}

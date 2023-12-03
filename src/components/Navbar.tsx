@@ -1,26 +1,11 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
    const [isToggleMenu, setIsToggleMenu] = useState(false);
-   const [isSticky, setIsSticky] = useState(false);
 
-
-   const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const maxHeight = window.innerHeight;
-      setIsSticky(scrollPosition > maxHeight);
-   };
-
- 
-   useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-         window.removeEventListener("scroll", handleScroll);
-      };
-   }, []);
    const toggleMenu = () => {
       setIsToggleMenu((prev) => !prev);
    };
