@@ -1,3 +1,4 @@
+import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
 
@@ -29,7 +30,7 @@ export async function POST(
       imageSrc,
       description,
       userId:currentUser.id
-    //   userId: currentUser.id
+
     }
   });
 
