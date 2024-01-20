@@ -1,51 +1,47 @@
-import Image from "next/image";
-import React from "react";
-import Bible from "../../public/images/bible.png";
-import Link from "next/link";
+import CategoriesList from "@/components/CategoriesList";
+import Post from "@/components/Post";
+import { TPost } from "./types";
 
-const Home = () => {
-   return (
-         <div className='min-h-screen w-full pt-6'>
-            <div className=''>
-               <h2 className='text-center py-3'>
-                  What is going On in the world
-               </h2>
-               <p className='text-center'>
-                  This blog has various news and concepts well explained in
-                  details.I hope you are gonna enjoy.
-               </p>
-            </div>
-            <div className='flex flex-col justify-center gap-5 md:gap-0 md:flex-row md:justify-between items-center py-10 mt-4'>
-               <div className='w-1/2 flex items-center justify-center'>
-                  <Image
-                     src={Bible}
-                     alt='bible'
-                     className='w-3/4'
-                  />
-               </div>
-               <div className='w-1/2 flex flex-col gap-4'>
-                  <h1 className='mb-3'>Know More About The Holy Bible</h1>
-                  <div>
-                     <ul className='flex flex-col gap-3'>
-                        <li>
-                           <Link href=''>Origin Of The Bible</Link>
-                        </li>
-                        <li>
-                           <Link href=''>Origin Of The Bible</Link>
-                        </li>
-                        <li>
-                           <Link href=''>Origin Of The Bible</Link>
-                        </li>
-                        <li>
-                           <Link href=''>Origin Of The Bible</Link>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
+const getPosts = async (): Promise<TPost[] | null> => {
+   try {
+      const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {
+         cache: "no-store",
+      });
 
-   );
+      if (res.ok) {
+         const posts = await res.json();
+         return posts;
+      }
+   } catch (error) {
+      console.log(error);
+   }
+
+   return null;
 };
 
-export default Home;
+export default async function Home() {
+   const posts = await getPosts();
+   return (
+      <>
+         <CategoriesList />
+         {posts && posts.length > 0 ? (
+            posts.map((post: TPost) => (
+               <Post
+                  key={post.id}
+                  id={post.id}
+                  author={post.author.name}
+                  authorEmail={post.authorEmail}
+                  date={post.createdAt}
+                  thumbnail={post.imageUrl}
+                  category={post.catName}
+                  title={post.title}
+                  content={post.content}
+                  links={post.links || []}
+               />
+            ))
+         ) : (
+            <div className='py-6'>No posts to display</div>
+         )}
+      </>
+   );
+}
