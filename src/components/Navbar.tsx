@@ -29,14 +29,13 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='flex justify-between pb-4 border-b mb-4 relative'>
+      <div className='flex justify-between pb-4 border-b mb-4 relative container h-[100px] items-center'>
          <div>
             <Link href={"/"}>
                <h1 className='text-dark text-4xl font-bold tracking-tighter'>
                   BERTIN
                </h1>
             </Link>
-            
          </div>
 
          {status === "authenticated" ? (

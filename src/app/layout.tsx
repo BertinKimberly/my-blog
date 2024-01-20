@@ -20,9 +20,9 @@ export default function RootLayout({
       <html lang='en'>
          <body className={inter.className}>
             <NextAuthProvider>
-               <main className='container min-h-screen'>
-                  <Layout>{children} </Layout>
-               </main>
+               <Layout>
+                  <main className='container min-h-[80vh]'>{children}</main>
+               </Layout>
             </NextAuthProvider>
          </body>
       </html>
