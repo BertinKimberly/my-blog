@@ -1,50 +1,104 @@
 "use client";
+
 import Link from "next/link";
-import React, { useState } from "react";
-import { FaBars, FaSearch, FaTimes } from "react-icons/fa";
+import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
 
-const Navbar = () => {
-   const [isToggleMenu, setIsToggleMenu] = useState(false);
+export default function Navbar() {
+   const { status, data: session } = useSession();
+   const [isPopupVisible, setIsPopupVisible] = useState(false);
+   const popupRef = useRef<HTMLDivElement | null>(null);
 
-   const toggleMenu = () => {
-      setIsToggleMenu((prev) => !prev);
-   };
+   useEffect(() => {
+      const handleClickOutside = (e: MouseEvent) => {
+         if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+            setIsPopupVisible(false);
+         }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      if (!isPopupVisible) {
+         document.removeEventListener("click", handleClickOutside);
+      }
+
+      return () => {
+         document.removeEventListener("click", handleClickOutside);
+      };
+   }, [isPopupVisible]);
+
    return (
-      <nav className=' h-[100px] mx-auto flex items-center justify-between relative'>
+      <div className='flex justify-between pb-4 border-b mb-4 relative'>
          <div>
-            <Link href='/'>BERTIN</Link>
+            <Link href={"/"}>
+               <h1 className='text-dark text-4xl font-bold tracking-tighter'>
+                  BERTIN
+               </h1>
+            </Link>
+            
          </div>
-         <div>
-            <form className='flex'>
-               <button className='w-[30px] h-[30px] border border-gray-600 flex items-center justify-center rounded-full z-10'>
-                  <FaSearch />
-               </button>
-               <input
-                  type='text'
-                  className='w-[100px] sm:w-[200px] border-t border-r border-b rounded-full border-gray-600 -ml-7 pl-8'
-               />
-            </form>
-         </div>
-         <div
-            className={`${
-               isToggleMenu
-                  ? "flex flex-col gap-3 text-2xl absolute right-2 top-[100px] bg-white z-20"
-                  : "hidden"
-            }  md:flex gap-5`}
-         >
-            <Link href='/'>Home</Link>
-            <Link href='/about'>About</Link>
-            <Link href='/contact'>Contact</Link>
-            <Link href='/posts'>Posts</Link>
-         </div>
-         <div
-            className='md:hidden block'
-            onClick={toggleMenu}
-         >
-            {isToggleMenu ? <FaTimes /> : <FaBars />}
-         </div>
-      </nav>
-   );
-};
 
-export default Navbar;
+         {status === "authenticated" ? (
+            <>
+               <div
+                  ref={popupRef}
+                  className={`absolute z-30 right-0 top-20 bg-white p-6 shadow-lg rounded-md flex-col gap-2 text-right min-w-[160px] ${
+                     isPopupVisible ? "flex" : "hidden"
+                  }`}
+               >
+                  <div className='font-bold'>{session?.user?.name}</div>
+                  <div>{session?.user?.email}</div>
+                  <Link
+                     onClick={() => setIsPopupVisible(false)}
+                     className='hover:underline'
+                     href={"/dashboard"}
+                  >
+                     Dashboard
+                  </Link>
+                  <Link
+                     onClick={() => setIsPopupVisible(false)}
+                     className='hover:underline'
+                     href={"/create-post"}
+                  >
+                     Create Post
+                  </Link>
+                  <button
+                     onClick={() => signOut()}
+                     className='btn'
+                  >
+                     Sign Out
+                  </button>
+               </div>
+
+               <div className='flex gap-2 items-center'>
+                  <Link
+                     className='hidden md:flex gap-2 items-center mr-6'
+                     href={"/create-post"}
+                  >
+                     <span>+</span>
+                     <span>Create new</span>
+                  </Link>
+                  <Image
+                     src={session?.user?.image || ""}
+                     width={36}
+                     height={36}
+                     alt='Profile Image'
+                     className='rounded-full cursor-pointer'
+                     onClick={() => setIsPopupVisible((prev) => !prev)}
+                  />
+               </div>
+            </>
+         ) : (
+            <div className='flex items-center'>
+               <Link
+                  className='btn'
+                  href={"/sign-in"}
+               >
+                  Sign In
+               </Link>
+            </div>
+         )}
+      </div>
+   );
+}
