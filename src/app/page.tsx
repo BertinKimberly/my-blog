@@ -1,5 +1,3 @@
-import Layout from "@/components/Layout";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import React from "react";
 import Bible from "../../public/images/bible.png";
@@ -7,7 +5,7 @@ import Link from "next/link";
 
 const Home = () => {
    return (
-      <Layout>
+     
          <div className='min-h-screen w-full pt-6'>
             <div className=''>
                <h2 className='text-center py-3'>
@@ -47,7 +45,7 @@ const Home = () => {
                </div>
             </div>
          </div>
-      </Layout>
+
    );
 };
 
