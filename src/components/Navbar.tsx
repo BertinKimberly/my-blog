@@ -42,7 +42,7 @@ export default function Navbar() {
             <>
                <div
                   ref={popupRef}
-                  className={`absolute z-30 right-0 top-20 bg-white p-6 shadow-lg rounded-md flex-col gap-2 text-right min-w-[160px] ${
+                  className={`absolute z-30 right-0 top-20 bg-white p-6 shadow-lg rounded-md flex-col gap-2 text-left min-w-[160px] ${
                      isPopupVisible ? "flex" : "hidden"
                   }`}
                >
@@ -64,7 +64,7 @@ export default function Navbar() {
                   </Link>
                   <button
                      onClick={() => signOut()}
-                     className='btn'
+                     className='hover:bg-gray-800 text-left hover:text-white w-[100px] p-1 rounded transition-all'
                   >
                      Sign Out
                   </button>

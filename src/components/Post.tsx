@@ -54,7 +54,7 @@ export default async function Post({
             )}
          </div>
 
-         <div className='w-full h-72 relative'>
+         <div className='w-full  min-h-[400px] relative'>
             {thumbnail ? (
                <Image
                   src={thumbnail}
@@ -104,7 +104,7 @@ export default async function Post({
          )}
 
          {isEditable && (
-            <div className='flex gap-3 font-bold py-2 px-4 rounded-md bg-slate-200 w-fit'>
+            <div className='flex gap-5 font-bold py-2 px-4 rounded-md bg-slate-200 w-fit'>
                <Link href={`/edit-post/${id}`}>Edit</Link>
                <DeleteButton id={id} />
             </div>
