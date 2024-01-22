@@ -53,7 +53,7 @@ export default async function Post({
                <>Posted on {formattedDate}</>
             )}
          </div>
-
+         <h2>{title}</h2>
          <div className='w-full  min-h-[400px] relative'>
             {thumbnail ? (
                <Image
@@ -81,8 +81,7 @@ export default async function Post({
             </Link>
          )}
 
-         <h2>{title}</h2>
-         <p className='content'>{content}</p>
+         <div dangerouslySetInnerHTML={{ __html: content }} />
 
          {links && (
             <div className='my-4 flex flex-col gap-3'>
