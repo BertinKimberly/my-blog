@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 
 export default function Navbar() {
    const { status, data: session } = useSession();
@@ -75,7 +76,7 @@ export default function Navbar() {
                      className='hidden md:flex gap-2 items-center mr-6'
                      href={"/create-post"}
                   >
-                     <span>+</span>
+                     <FaPlus />
                      <span>Create new</span>
                   </Link>
                   <Image
