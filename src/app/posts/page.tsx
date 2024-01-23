@@ -1,6 +1,7 @@
 import CategoriesList from "@/components/CategoriesList";
 import Post from "@/components/Post";
-import { TPost } from "./types";
+import { TPost } from "../types";
+
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -19,11 +20,11 @@ const getPosts = async (): Promise<TPost[] | null> => {
    return null;
 };
 
-export default async function Home() {
+export default async function Posts() {
    const posts = await getPosts();
    return (
       <>
-         {/* <CategoriesList />
+         <CategoriesList />
          {posts && posts.length > 0 ? (
             posts.map((post: TPost) => (
                <Post
@@ -41,9 +42,7 @@ export default async function Home() {
             ))
          ) : (
             <div className='py-6'>No posts to display</div>
-         )} */}
-
-         <h1>Hello</h1>
+         )}
       </>
    );
 }

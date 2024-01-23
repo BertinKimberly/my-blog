@@ -21,7 +21,9 @@ export default function RootLayout({
          <body className={inter.className}>
             <NextAuthProvider>
                <Layout>
-                  <main className='container min-h-[80vh]'>{children}</main>
+                  <main className='mx-auto container min-h-[80vh]'>
+                     {children}
+                  </main>
                </Layout>
             </NextAuthProvider>
          </body>
