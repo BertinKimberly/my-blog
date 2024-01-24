@@ -1,6 +1,7 @@
 import CategoriesList from "@/components/CategoriesList";
 import Post from "@/components/Post";
 import { TPost } from "./types";
+import PopularPosts from "@/components/PopularPosts";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -23,27 +24,10 @@ export default async function Home() {
    const posts = await getPosts();
    return (
       <>
-         {/* <CategoriesList />
-         {posts && posts.length > 0 ? (
-            posts.map((post: TPost) => (
-               <Post
-                  key={post.id}
-                  id={post.id}
-                  author={post.author.name}
-                  authorEmail={post.authorEmail}
-                  date={post.createdAt}
-                  thumbnail={post.imageUrl}
-                  category={post.catName}
-                  title={post.title}
-                  content={post.content}
-                  links={post.links || []}
-               />
-            ))
-         ) : (
-            <div className='py-6'>No posts to display</div>
-         )} */}
 
-         <h1>Hello</h1>
+         <h1>Welcome to This blog . Enjoy accordingly</h1>
+         <h3>Recent Posts</h3>
+         <PopularPosts posts={posts} />
       </>
    );
 }
