@@ -24,9 +24,7 @@ export default async function Home() {
    const posts = await getPosts();
    return (
       <>
-
          <h1>Welcome to This blog . Enjoy accordingly</h1>
-         <h3>Recent Posts</h3>
          <PopularPosts posts={posts} />
       </>
    );

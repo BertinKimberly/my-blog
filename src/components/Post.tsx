@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import DeleteButton from "./DeleteButton";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { CiLink } from "react-icons/ci";
@@ -24,13 +23,10 @@ export default async function Post({
    thumbnail,
    authorEmail,
    title,
-   content,
    links,
-   category,
 }: PostProps) {
    const session = await getServerSession(authOptions);
 
-   const isEditable = session && session?.user?.email === authorEmail;
 
    const dateObject = new Date(date);
    const options: Intl.DateTimeFormatOptions = {
@@ -39,53 +35,38 @@ export default async function Post({
       year: "numeric",
    };
 
-   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
    return (
-      <div className='my-4 border-b border-b-300 py-8'>
-         <div className='mb-4'>
-            {author ? (
-               <>
-                  Posted by: <span className='font-bold'>{author}</span> on{" "}
-                  {formattedDate}
-               </>
-            ) : (
-               <>Posted on {formattedDate}</>
-            )}
-         </div>
-         <h2>{title}</h2>
-         <div className='w-full  min-h-[400px] relative'>
-            {thumbnail ? (
-               <Image
-                  src={thumbnail}
-                  alt={title}
-                  fill
-                  className='object-cover rounded-md object-center'
-               />
-            ) : (
-               <Image
-                  src={"/thumbnail-placeholder.png"}
-                  alt={title}
-                  fill
-                  className='object-cover rounded-md object-center'
-               />
-            )}
-         </div>
-
-         {category && (
+      <div className='h-[500px] bg-blue-600 flex flex-col gap-3'>
+         <h1>{title}</h1>
+         <div className='border border-border p-1 relative  transition rounded overflow-hidden bg-green-600 h-[300px]'>
             <Link
-               className='bg-slate-800 w-fit text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
-               href={`categories/${category}`}
+               href={`/posts/${id}`}
+               className='w-full h-[300px] bg-blue-500'
             >
-               {category}
+               {thumbnail ? (
+                  <Image
+                     src={thumbnail}
+                     alt={title}
+                     fill
+                     className='w-full h-[100px] '
+                  />
+               ) : (
+                  <Image
+                     src={"/thumbnail-placeholder.png"}
+                     alt={title}
+                     fill
+                     className='w-full h-64 object-cover'
+                  />
+               )}
             </Link>
-         )}
-
-         <div dangerouslySetInnerHTML={{ __html: content }} />
-
+            <div className='absolute flex-btn gap-2 bottom-0 right-0 left-0 bg-red-600 bg-opacity-60 text-white px-4 py-3 '>
+               <button>Read More</button>
+            </div>
+         </div>
          {links && (
             <div className='my-4 flex flex-col gap-3'>
-               {links.map((link, i) => (
+               {links.slice(0, 2).map((link, i) => (
                   <div
                      key={i}
                      className='flex gap-2 items-center'
@@ -101,13 +82,7 @@ export default async function Post({
                ))}
             </div>
          )}
-
-         {isEditable && (
-            <div className='flex gap-5 font-bold py-2 px-4 rounded-md bg-slate-200 w-fit'>
-               <Link href={`/edit-post/${id}`}>Edit</Link>
-               <DeleteButton id={id} />
-            </div>
-         )}
+         <p>By {author}</p>
       </div>
    );
 }
