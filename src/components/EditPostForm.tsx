@@ -9,6 +9,8 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { FaPlus, FaTimes, FaUpload } from "react-icons/fa";
 import { CiLink } from "react-icons/ci";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function EditPostForm({ post }: { post: TPost }) {
    const [links, setLinks] = useState<string[]>([]);
@@ -143,12 +145,12 @@ export default function EditPostForm({ post }: { post: TPost }) {
                value={title}
                className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
             />
-            <textarea
-               onChange={(e) => setContent(e.target.value)}
+            <ReactQuill
+               onChange={(value) => setContent(value)}
                placeholder='Content'
+               className='rounded'
                value={content}
-               className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
-            ></textarea>
+            />
 
             {links &&
                links.map((link, i) => (
