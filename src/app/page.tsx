@@ -1,5 +1,3 @@
-import CategoriesList from "@/components/CategoriesList";
-import Post from "@/components/Post";
 import { TPost } from "./types";
 import PopularPosts from "@/components/PopularPosts";
 

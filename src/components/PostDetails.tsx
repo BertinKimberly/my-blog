@@ -1,5 +1,3 @@
-// components/PostDetails.tsx (or the path where you store your components)
-
 import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
@@ -9,25 +7,28 @@ interface PostDetailsProps {
    post: {
       id: string;
       author: string;
-      date: string;
-      thumbnail?: string;
+      createdAt: string;
+      imageUrl?: string;
       authorEmail?: string;
       title: string;
       content: string;
       links?: string[];
       category?: string;
    };
-   isEditable: boolean;
-   formattedDate: string;
+   isEditable?: boolean;
 }
 
-const PostDetails: React.FC<PostDetailsProps> = ({
-   post,
-   isEditable,
-   formattedDate,
-}) => {
-   // ... (rest of your component code)
+const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
+   console.log("THUMBNAIL" + post.imageUrl);
+   console.log(post);
 
+   const dateObject = post.createdAt ? new Date(post.createdAt) : null;
+   const options: Intl.DateTimeFormatOptions = {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+   };
+   const formattedDate = dateObject.toLocaleDateString("en-US", options);
    return (
       <div className='my-4 border-b border-b-300 py-8'>
          <div className='mb-4'>
@@ -42,9 +43,9 @@ const PostDetails: React.FC<PostDetailsProps> = ({
          </div>
          <h2>{post.title}</h2>
          <div className='w-full  min-h-[400px] relative'>
-            {post.thumbnail ? (
+            {post.imageUrl ? (
                <Image
-                  src={post.thumbnail}
+                  src={post.imageUrl}
                   alt={post.title}
                   fill
                   className='object-cover rounded-md object-center'

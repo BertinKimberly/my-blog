@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import PostDetails from "@/components/PostDetails";
 import { TPost } from "@/app/types";
 
-// Function to fetch post by ID
+
 const getPostById = async (id: string) => {
    try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${id}`, {
@@ -14,7 +14,7 @@ const getPostById = async (id: string) => {
       if (!res.ok) {
          console.error("Error: Post not found");
       } else {
-         // Make sure to remove the console.log statement before return
+   
          console.log("HOW GREAT IS OUR GOD", res);
 
          return res.json();
@@ -24,39 +24,29 @@ const getPostById = async (id: string) => {
    }
 };
 
-// Main component
+
 export default async function Page({ params }: { params: { id: string } }) {
    try {
-      console.log("This is id", params.id);
+      console.log("Fetching post details for id:", params.id);
 
-      // Fetch post by ID
-      const post : TPost= await getPostById(params.id);
+     
+      const post: TPost | null = await getPostById(params.id);
 
-      // Get server session
+     
       const session = await getServerSession(authOptions);
 
-      // Check if the user is the author of the post
+     
       const isEditable = session?.user?.email === post?.authorEmail;
 
       if (!post) {
          return <div>Error: Post not found</div>;
       }
 
-      // Format the date
-      const dateObject = new Date(post.date);
-      const options: Intl.DateTimeFormatOptions = {
-         month: "short",
-         day: "numeric",
-         year: "numeric",
-      };
-      const formattedDate = dateObject.toLocaleDateString("en-US", options);
-
-      // Render the PostDetails component
+     
       return (
          <PostDetails
             post={post}
             isEditable={isEditable}
-            formattedDate={formattedDate}
          />
       );
    } catch (error) {
