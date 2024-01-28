@@ -4,13 +4,15 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { FaPlus } from "react-icons/fa";
+import { FaBars, FaPlus, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
    const { status, data: session } = useSession();
    const [isPopupVisible, setIsPopupVisible] = useState(false);
+   const [toggleMenu, setToggleMenu] = useState(false);
    const popupRef = useRef<HTMLDivElement | null>(null);
 
+   const handleMenu = () => setToggleMenu((prev) => !prev);
    useEffect(() => {
       const handleClickOutside = (e: MouseEvent) => {
          if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
@@ -38,9 +40,25 @@ export default function Navbar() {
                </h1>
             </Link>
          </div>
-         <div className=' flex items-center gap-4'>
-            <Link href={"/posts"}>Posts</Link>
-            <Link href={"/about"}>About</Link>
+         <div
+            className={` flex items-center gap-4 ${
+               toggleMenu
+                  ? "hidden"
+                  : "flex-col absolute top-[100px] right-4 p-2 z-50 bg-white md:flex-row md:static "
+            }`}
+         >
+            <Link
+               href={"/posts"}
+               onClick={handleMenu}
+            >
+               Posts
+            </Link>
+            <Link
+               href={"/about"}
+               onClick={handleMenu}
+            >
+               About
+            </Link>
             {status === "authenticated" ? (
                <>
                   <div
@@ -96,11 +114,18 @@ export default function Navbar() {
                   <Link
                      className='btn'
                      href={"/sign-in"}
+                     onClick={handleMenu}
                   >
                      Sign In
                   </Link>
                </div>
             )}
+         </div>
+         <div
+            className='md:hidden'
+            onClick={handleMenu}
+         >
+            {toggleMenu ? <FaBars /> : <FaTimes />}
          </div>
       </div>
    );
