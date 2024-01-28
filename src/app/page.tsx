@@ -23,6 +23,7 @@ export default async function Home() {
    return (
       <>
          <h1>Welcome to This blog . Enjoy accordingly</h1>
+         <PopularPosts posts={posts} />
       </>
    );
 }
