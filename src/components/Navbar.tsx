@@ -30,7 +30,7 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto'>
+      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b'>
          <div>
             <Link href={"/"}>
                <h1 className='text-dark text-2xl font-bold tracking-tighter'>
@@ -40,6 +40,7 @@ export default function Navbar() {
          </div>
          <div className=' flex items-center gap-4'>
             <Link href={"/posts"}>Posts</Link>
+            <Link href={"/about"}>About</Link>
             {status === "authenticated" ? (
                <>
                   <div
