@@ -34,7 +34,10 @@ export default function Navbar() {
    return (
       <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b'>
          <div>
-            <Link href={"/"}>
+            <Link
+               href={"/"}
+               onClick={() => setToggleMenu(true)}
+            >
                <h1 className='text-dark text-2xl font-bold tracking-tighter'>
                   BERTIN
                </h1>
