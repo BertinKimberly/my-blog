@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { CiLink } from "react-icons/ci";
+import { FaThumbsUp } from "react-icons/fa";
 
 interface PostProps {
    id: string;
@@ -27,7 +28,6 @@ export default async function Post({
 }: PostProps) {
    const session = await getServerSession(authOptions);
 
-
    const dateObject = new Date(date);
    const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -35,9 +35,8 @@ export default async function Post({
       year: "numeric",
    };
 
-
    return (
-      <div className='h-[500px] bg-blue-600 flex flex-col gap-3'>
+      <div className='h-[500px] bg-blue-600 flex flex-col gap-3 p-1 rounded'>
          <h1>{title}</h1>
          <div className='border border-border p-1 relative  transition rounded overflow-hidden bg-green-600 h-[300px]'>
             <Link
@@ -60,8 +59,13 @@ export default async function Post({
                   />
                )}
             </Link>
-            <div className='absolute flex-btn gap-2 bottom-0 right-0 left-0 bg-red-600 bg-opacity-60 text-white px-4 py-3 '>
-               <button>Read More</button>
+            <div className='flex absolute justify-between gap-2 bottom-0 right-0 left-0 bg-red-600 bg-opacity-60 text-white px-4 py-3 '>
+               <button>
+                  <Link href={`/posts/${id}`}>Read More</Link>
+               </button>
+               <Link href={`/posts/${id}`}>
+                  <FaThumbsUp />
+               </Link>
             </div>
          </div>
          {links && (

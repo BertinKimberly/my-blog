@@ -1,5 +1,8 @@
+import { FaUser } from "react-icons/fa";
 import { TPost } from "./types";
 import PopularPosts from "@/components/PopularPosts";
+import Image from "next/image";
+import Bible from "../../public/images/bible.png";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -22,7 +25,41 @@ export default async function Home() {
    const posts = await getPosts();
    return (
       <>
-         <h1>Welcome to This blog . Enjoy accordingly</h1>
+         <h1 className='text-3xl'>Welcome to This blog . Enjoy accordingly</h1>
+         <div className='my-20 py-10 md:px-4  bg-dry '>
+            <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center'>
+               <div className='flex lg:gap-10 gap-6 flex-col'>
+                  <h1 className='xl:text-3xl text-xl capitalize font-sans font-medium   xl:leading-loose'>
+                     Read As Many Blogs As You Want . No Limitations.
+                  </h1>
+                  <p className='text-text text-sm xl:text-base leading-6 xl:leading-8'>
+                     Welcome to our Gospel Blog, where inspiration meets
+                     revelation! Dive into the uplifting messages of faith,
+                     hope, and love that resonate with the core of Gospel
+                     teachings. Explore a journey of spiritual growth and
+                     enlightenment with our diverse content. Join our community
+                     as we share the timeless wisdom that guides us through
+                     life's challenges. Let the power of gospel illuminate your
+                     path. Blessings await!
+                  </p>
+                  <div className='flex gap-4 md:text-lg text-sm'>
+                     <div className='flex-colo  text-subMain px-6 py-3 rounded-md font-bold'>
+                        10K + Articles
+                     </div>
+                     <div className='flex flex-rows gap-4  text-subMain px-6 py-3 rounded-md font-bold'>
+                        <FaUser /> 2K
+                     </div>
+                  </div>
+               </div>
+               <div className='flex items-center justify-center p-2 '>
+                  <Image
+                     src={Bible}
+                     alt={"Bible"}
+                     className='w-1/2 object-contain'
+                  />
+               </div>
+            </div>
+         </div>
          <PopularPosts posts={posts} />
       </>
    );

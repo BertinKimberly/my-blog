@@ -46,7 +46,7 @@ export default function Navbar() {
          <div
             className={` flex items-center gap-4 ${
                toggleMenu
-                  ? "hidden"
+                  ? "hidden md:flex"
                   : "flex-col absolute top-[100px] right-4 p-2 z-50 bg-white md:flex-row md:static "
             }`}
          >
