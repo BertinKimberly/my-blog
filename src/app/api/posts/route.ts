@@ -7,6 +7,8 @@ import prisma from "../../../../lib/prismadb";
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
 
+  
+
   if (!session) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
@@ -44,6 +46,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
+
   try {
     const posts = await prisma.post.findMany({
       include: { author: { select: { name: true } } },
