@@ -26,7 +26,7 @@ const Footer = () => {
          ],
       },
       {
-         title: "Popular Posts",
+         title: "Categories",
          links: [
             {
                name: "New Testament",

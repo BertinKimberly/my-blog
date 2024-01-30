@@ -46,6 +46,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+  Like          Like[]
+  Comment       Comment[]
 }
 
 model VerificationToken {
@@ -68,6 +70,8 @@ model Post {
   author      User      @relation(fields: [authorEmail], references: [email])
   authorEmail String
   links       String[]
+  comments    Comment[]
+  likes       Like[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -77,4 +81,29 @@ model Category {
   catName String   @unique
   posts   Post[]
   postIDs String[] @db.ObjectId
+}
+
+model Like {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  userEmail    String   
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@unique([postId, userEmail])
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  userEmail    String   
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 }

@@ -7,7 +7,9 @@
 .container {
    @apply px-[0.8rem] sm:px-[2rem] md:px-[5rem];
 }
-
+h1 {
+   font-size: large;
+}
 body {
    font-family: Roboto, "sans-serif";
 }
