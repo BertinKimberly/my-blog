@@ -72,7 +72,7 @@ export default function Navbar() {
                <>
                   <div
                      ref={popupRef}
-                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-2 text-left min-w-[160px] ${
+                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-2 text-left min-w-[160px] bg-white dark:bg-black ${
                         isPopupVisible ? "flex" : "hidden"
                      }`}
                   >

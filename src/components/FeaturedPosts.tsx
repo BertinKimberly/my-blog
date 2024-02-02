@@ -2,13 +2,13 @@ import React from "react";
 import Post from "./Post";
 import { TPost } from "@/app/types";
 
-interface PopularPostsProps {
+interface FeaturedPostsProps {
    posts: TPost[] | null;
 }
 
-const PopularPosts: React.FC<PopularPostsProps> = ({ posts }) => {
+const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
    return (
-      <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10'>
+      <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10 '>
          {posts && posts.length > 0 ? (
             posts.slice(0, 6).map((post: TPost) => (
                <Post
@@ -31,4 +31,4 @@ const PopularPosts: React.FC<PopularPostsProps> = ({ posts }) => {
    );
 };
 
-export default PopularPosts;
+export default FeaturedPosts;

@@ -29,7 +29,7 @@ const About = () => {
                </div>
                <div className='grid md:grid-cols-2 gap-6 mt-8'>
                   <div className='p-8 bg-dry rounded-lg'>
-                     <span className='text-3xl block font-extrabold  bg-main w-max p-3 rounded-md'>
+                     <span className='text-3xl block font-extrabold  dark:bg-main w-max p-3 rounded-md border bg-transparent'>
                         0.5K
                      </span>
                      <h4 className='text-lg font-semibold my-2'>Users</h4>
@@ -38,7 +38,7 @@ const About = () => {
                      </p>
                   </div>
                   <div className='p-8 bg-dry rounded-lg'>
-                     <span className='text-3xl block font-extrabold bg-main w-max p-3 rounded-md'>
+                     <span className='text-3xl block font-extrabold dark:bg-main w-max p-3 rounded-md border bg-transparent'>
                         1K +
                      </span>
                      <h4 className='text-lg font-semibold my-2'>Articles</h4>

@@ -3,6 +3,7 @@ import { TPost } from "./types";
 import PopularPosts from "@/components/PopularPosts";
 import Image from "next/image";
 import Bible from "../../public/images/bible.png";
+import FeaturedPosts from "@/components/FeaturedPosts";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -44,14 +45,6 @@ export default async function Home() {
                      life's challenges. Let the power of gospel illuminate your
                      path. Blessings await!
                   </p>
-                  <div className='flex gap-4 md:text-lg text-sm'>
-                     <div className='flex-colo  text-subMain px-6 py-3 rounded-md font-bold'>
-                        10K + Articles
-                     </div>
-                     <div className='flex flex-rows gap-4  text-subMain px-6 py-3 rounded-md font-bold'>
-                        <FaUser /> 2K
-                     </div>
-                  </div>
                </div>
                <div className='flex items-center justify-center p-2 '>
                   <Image
@@ -62,7 +55,10 @@ export default async function Home() {
                </div>
             </div>
          </div>
+
          <PopularPosts posts={posts} />
+
+         <FeaturedPosts posts={posts} />
       </>
    );
 }

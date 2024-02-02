@@ -22,26 +22,16 @@ export default async function Post({
    author,
    date,
    thumbnail,
-   authorEmail,
    title,
    links,
 }: PostProps) {
-   const session = await getServerSession(authOptions);
-
-   const dateObject = new Date(date);
-   const options: Intl.DateTimeFormatOptions = {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-   };
-
    return (
-      <div className='h-[500px] bg-blue-600 flex flex-col gap-3 p-1 rounded'>
+      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-subMain border  '>
          <h1>{title}</h1>
-         <div className='border border-border p-1 relative  transition rounded overflow-hidden bg-green-600 h-[300px]'>
+         <div className='border border-border p-1 relative  transition rounded overflow-hidden  h-[300px]'>
             <Link
                href={`/posts/${id}`}
-               className='w-full h-[300px] bg-blue-500'
+               className='w-full h-[300px] '
             >
                {thumbnail ? (
                   <Image
@@ -59,7 +49,7 @@ export default async function Post({
                   />
                )}
             </Link>
-            <div className='flex absolute justify-between gap-2 bottom-0 right-0 left-0 bg-red-600 bg-opacity-60 text-white px-4 py-3 '>
+            <div className='flex absolute justify-between gap-2 bottom-0 right-0 left-0 dark:bg-subMain bg-opacity-60 text-white px-4 py-3 '>
                <button>
                   <Link href={`/posts/${id}`}>Read More</Link>
                </button>
