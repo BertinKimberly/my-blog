@@ -4,13 +4,19 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-import { FaBars, FaPlus, FaTimes } from "react-icons/fa";
+import { FaBars, FaMoon, FaPlus, FaSun, FaTimes } from "react-icons/fa";
+import { cx } from "@/utils";
+import { useThemeSwitch } from "@/hooks/useThemeSwitch";
 
 export default function Navbar() {
    const { status, data: session } = useSession();
    const [isPopupVisible, setIsPopupVisible] = useState(false);
    const [toggleMenu, setToggleMenu] = useState(false);
    const popupRef = useRef<HTMLDivElement | null>(null);
+
+   //theme
+
+   const [mode, setMode] = useThemeSwitch();
 
    const handleMenu = () => setToggleMenu((prev) => !prev);
    useEffect(() => {
@@ -32,7 +38,7 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b'>
+      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b dark:bg-black'>
          <div>
             <Link
                href={"/"}
@@ -47,7 +53,7 @@ export default function Navbar() {
             className={` flex items-center gap-4 ${
                toggleMenu
                   ? "hidden md:flex"
-                  : "flex-col absolute top-[100px] right-4 p-2 z-50 bg-white md:flex-row md:static "
+                  : "flex-col absolute top-[100px] right-4 p-2 z-50  md:flex-row md:static "
             }`}
          >
             <Link
@@ -66,7 +72,7 @@ export default function Navbar() {
                <>
                   <div
                      ref={popupRef}
-                     className={`absolute z-30 right-0 top-20 bg-white p-6 shadow-lg rounded-md flex-col gap-2 text-left min-w-[160px] ${
+                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-2 text-left min-w-[160px] ${
                         isPopupVisible ? "flex" : "hidden"
                      }`}
                   >
@@ -87,8 +93,24 @@ export default function Navbar() {
                         Create Post
                      </Link>
                      <button
+                        onClick={() =>
+                           setMode((prevMode: string) =>
+                              prevMode === "light" ? "dark" : "light"
+                           )
+                        }
+                        className={cx(
+                           "w-6 h-6 ease  flex items-center justify-center rounded-full ",
+                           mode === "light"
+                              ? "bg-dark text-light"
+                              : "bg-light text-dark"
+                        )}
+                        aria-label='theme-switcher'
+                     >
+                        {mode === "light" ? <FaMoon /> : <FaSun />}
+                     </button>
+                     <button
                         onClick={() => signOut()}
-                        className='hover:bg-gray-800 text-left hover:text-white w-[100px] p-1 rounded transition-all'
+                        className=' text-left border  p-1 rounded transition-all w-max'
                      >
                         Sign Out
                      </button>

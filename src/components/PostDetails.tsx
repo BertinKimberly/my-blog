@@ -162,7 +162,10 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
 
          {/* Display comments */}
          {comments.map((comment) => (
-            <div className=' gap-3 flex flex-col p-4 min-w-max'>
+            <div
+               className=' gap-3 flex flex-col p-4 min-w-max'
+               key={comment.id}
+            >
                <h5>{comment.user.name}</h5>
                <p className='ml-3 '>{comment.content}</p>
             </div>

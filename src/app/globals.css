@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&family=Rubik:wght@400;500;700&display=swap");
 
 .container {
    @apply px-[0.8rem] sm:px-[2rem] md:px-[5rem];

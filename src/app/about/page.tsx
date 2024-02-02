@@ -29,14 +29,18 @@ const About = () => {
                </div>
                <div className='grid md:grid-cols-2 gap-6 mt-8'>
                   <div className='p-8 bg-dry rounded-lg'>
-                     <span className='text-3xl block font-extrabold'>0.5K</span>
+                     <span className='text-3xl block font-extrabold  bg-main w-max p-3 rounded-md'>
+                        0.5K
+                     </span>
                      <h4 className='text-lg font-semibold my-2'>Users</h4>
                      <p className='mb-0 text-text leading-7 text-sm'>
                         These movies will help you know more about gospel
                      </p>
                   </div>
                   <div className='p-8 bg-dry rounded-lg'>
-                     <span className='text-3xl block font-extrabold'>1K +</span>
+                     <span className='text-3xl block font-extrabold bg-main w-max p-3 rounded-md'>
+                        1K +
+                     </span>
                      <h4 className='text-lg font-semibold my-2'>Articles</h4>
                      <p className='mb-0 text-text leading-7 text-sm'>
                         It is a preasure to have you
