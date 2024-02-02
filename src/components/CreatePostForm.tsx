@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { FaCross, FaPlus, FaTimes, FaUpload } from "react-icons/fa";
+import { FaPlus, FaTimes, FaUpload } from "react-icons/fa";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 

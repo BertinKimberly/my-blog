@@ -7,8 +7,6 @@ import prisma from "../../../../lib/prismadb";
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
 
-  
-
   if (!session) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }

@@ -3,14 +3,14 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]/route";
 import prisma from "../../../../lib/prismadb";
 
-
-// CREATE A COMMENT
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
+console.log("session",session);
 
   if (!session) {
-    return NextResponse.json({ message: "Not Authenticated!" }, { status: 401 });
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
+
 
   try {
     const { postId, content } = await req.json();

@@ -17,3 +17,13 @@ export type TPost = {
     name: string;
   };
 };
+
+export type TComment={
+  id:string;
+  postId:string;
+  userEmail:string;
+  content:string;
+  user:{
+    name:string;
+  }
+}

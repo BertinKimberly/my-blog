@@ -1,7 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import { CiLink } from "react-icons/ci";
+import { FormEvent, useEffect, useState } from "react";
+import { TComment } from "@/app/types";
+import { IoMdSend } from "react-icons/io";
 
 interface PostDetailsProps {
    post: {
@@ -19,9 +23,6 @@ interface PostDetailsProps {
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
-   console.log("THUMBNAIL" + post.imageUrl);
-   console.log(post);
-
    const dateObject = post.createdAt ? new Date(post.createdAt) : null;
    const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -29,6 +30,47 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       year: "numeric",
    };
    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+
+   //comments
+
+   const [commentText, setCommentText] = useState<string>("");
+   const [comments, setComments] = useState<TComment[]>([]);
+
+   useEffect(() => {
+      const fetchComments = async () => {
+         try {
+            const response = await fetch(`/api/comments?postId=${post.id}`);
+            const data = await response.json();
+            setComments(data);
+         } catch (error) {
+            console.error("Error fetching comments", error);
+         }
+      };
+      fetchComments();
+   }, []);
+
+   const handleCommentSubmit = async (e: FormEvent) => {
+      e.preventDefault();
+
+      try {
+         const response = await fetch("/api/comments", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               postId: post.id,
+               content: commentText,
+            }),
+         });
+
+         const newComment = await response.json();
+         setComments([...comments, newComment]);
+      } catch (error) {
+         console.error("Error submitting comment", error);
+      }
+   };
+
    return (
       <div className='my-4 border-b border-b-300 py-8'>
          <div className='mb-4'>
@@ -96,6 +138,35 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                <DeleteButton id={post.id} />
             </div>
          )}
+         <h1>Comments</h1>
+
+         {/* Comment form */}
+         <form
+            className='flex p-1 mt-10 '
+            onSubmit={handleCommentSubmit}
+         >
+            <input
+               type='text'
+               value={commentText}
+               onChange={(e) => setCommentText(e.target.value)}
+               placeholder='that was awesome'
+               className='w-[400px] text-sm p-2 border border-border rounded text-black'
+            />
+            <button
+               type='submit'
+               className='p-2 border border-border rounded'
+            >
+               <IoMdSend />
+            </button>
+         </form>
+
+         {/* Display comments */}
+         {comments.map((comment) => (
+            <div className=' gap-3 flex flex-col p-4 min-w-max'>
+               <h5>{comment.user.name}</h5>
+               <p className='ml-3 '>{comment.content}</p>
+            </div>
+         ))}
       </div>
    );
 };
