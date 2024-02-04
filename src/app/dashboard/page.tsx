@@ -34,33 +34,34 @@ export default async function Dashboard() {
    return (
       <div>
          <h1>My Posts</h1>
-
-         {posts && posts.length > 0 ? (
-            posts.map((post: TPost) => (
-               <Post
-                  key={post.id}
-                  id={post.id}
-                  author={""}
-                  authorEmail={post.authorEmail}
-                  date={post.createdAt}
-                  thumbnail={post.imageUrl}
-                  category={post.catName}
-                  title={post.title}
-                  content={post.content}
-                  links={post.links || []}
-               />
-            ))
-         ) : (
-            <div className='py-6'>
-               No posts created yet.{" "}
-               <Link
-                  className='underline'
-                  href={"/create-post"}
-               >
-                  Create New
-               </Link>
-            </div>
-         )}
+         <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10'>
+            {posts && posts.length > 0 ? (
+               posts.map((post: TPost) => (
+                  <Post
+                     key={post.id}
+                     id={post.id}
+                     author={""}
+                     authorEmail={post.authorEmail}
+                     date={post.createdAt}
+                     thumbnail={post.imageUrl}
+                     category={post.catName}
+                     title={post.title}
+                     content={post.content}
+                     links={post.links || []}
+                  />
+               ))
+            ) : (
+               <div className='py-6'>
+                  No posts created yet.{" "}
+                  <Link
+                     className='underline'
+                     href={"/create-post"}
+                  >
+                     Create New
+                  </Link>
+               </div>
+            )}
+         </div>
       </div>
    );
 }
