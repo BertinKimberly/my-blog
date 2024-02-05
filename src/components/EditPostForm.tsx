@@ -143,7 +143,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
                type='text'
                placeholder='Title'
                value={title}
-               className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
+               className='w-full text-sm mt-2 p-4 border border-border rounded  text-black dark:text-white  bg-transparent'
             />
             <ReactQuill
                onChange={(value) => setContent(value)}
@@ -176,7 +176,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
 
             <div className='flex gap-2'>
                <input
-                  className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
+                  className='w-full text-sm mt-2 p-4 border border-border rounded text-black dark:text-white  bg-transparent'
                   type='text'
                   onChange={(e) => setLinkInput(e.target.value)}
                   value={linkInput}
@@ -184,7 +184,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
                />
                <button
                   onClick={addLink}
-                  className='text-sm mt-2 p-4 border border-border rounded text-black'
+                  className='text-sm mt-2 p-4 border border-border rounded text-black dark:text-white'
                >
                   <FaPlus />
                </button>
@@ -192,7 +192,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
 
             <CldUploadButton
                uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-               className={`h-48 border-2 mt-4 border-dotted grid place-items-center bg-slate-100 rounded-md relative ${
+               className={`h-48 border-2 mt-4 border-dotted grid place-items-center bg-transparent rounded-md relative ${
                   imageUrl && "pointer-events-none"
                }`}
                onUpload={handleImageUpload}
@@ -222,10 +222,15 @@ export default function EditPostForm({ post }: { post: TPost }) {
 
             <select
                onChange={(e) => setSelectedCategory(e.target.value)}
-               className='w-full mt-2 px-6 py-4 text-text  border border-border'
+               className='w-full mt-2 px-6 py-4 text-text   bg-main border rounded text-white'
                value={selectedCategory}
             >
-               <option value=''>Select A Category</option>
+               <option
+                  value=''
+                  className='bg-white text-black'
+               >
+                  Select A Category
+               </option>
                {categories &&
                   categories.map((category) => (
                      <option
@@ -238,7 +243,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
             </select>
 
             <button
-               className='bg-gray-800 transitions hover:bg-white hover:text-gray-800 flex-rows gap-4 text-white p-4 rounded-lg w-full border border-border my-3'
+               className='bg-main transition-all hover:bg-transparent hover:text-main gap-4 text-white p-4 rounded-lg w-full border  my-3'
                type='submit'
             >
                Update Post

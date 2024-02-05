@@ -49,11 +49,19 @@ export default async function Post({
                   />
                )}
             </Link>
-            <div className='flex absolute justify-between gap-2 bottom-0 right-0 left-0 dark:bg-subMain bg-opacity-60 text-white px-4 py-3 '>
+            <div className='flex absolute justify-between gap-2 bottom-0 right-0 bg-white text-white  left-0 dark:bg-subMain bg-opacity-60 dark:text-white px-4 py-3 '>
                <button>
-                  <Link href={`/posts/${id}`}>Read More</Link>
+                  <Link
+                     href={`/posts/${id}`}
+                     className='text-black dark:text-white'
+                  >
+                     Read More
+                  </Link>
                </button>
-               <Link href={`/posts/${id}`}>
+               <Link
+                  href={`/posts/${id}`}
+                  className='text-black dark:text-white'
+               >
                   <FaThumbsUp />
                </Link>
             </div>

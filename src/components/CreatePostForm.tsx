@@ -120,19 +120,18 @@ export default function CreatePostForm() {
          <h2 className='mb-2'>Create Post</h2>
          <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-2'
+            className='flex flex-col gap-2 py-10'
          >
             <input
                onChange={(e) => setTitle(e.target.value)}
                type='text'
                placeholder='Title'
-               className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
+               className='w-full text-sm mt-2 p-4 border rounded text-black dark:text-white  bg-transparent'
             />
             <ReactQuill
                onChange={(value) => setContent(value)}
                placeholder='Content'
                className='rounded'
-         
             />
 
             {links &&
@@ -161,7 +160,7 @@ export default function CreatePostForm() {
 
             <div className='flex gap-2'>
                <input
-                  className='w-full text-sm mt-2 p-4 border border-border rounded text-black'
+                  className='w-full text-sm mt-2 p-4 border border-border rounded text-black dark:text-white  bg-transparent'
                   type='text'
                   onChange={(e) => setLinkInput(e.target.value)}
                   value={linkInput}
@@ -169,7 +168,7 @@ export default function CreatePostForm() {
                />
                <button
                   onClick={addLink}
-                  className=' text-sm mt-2 p-4 border border-border rounded text-black'
+                  className=' text-sm mt-2 p-4 border border-border rounded text-black dark:text-white'
                >
                   <FaPlus />
                </button>
@@ -177,7 +176,7 @@ export default function CreatePostForm() {
 
             <CldUploadButton
                uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-               className={`h-48 border-2 mt-4 border-dotted grid place-items-center bg-slate-100 rounded-md relative ${
+               className={`h-48 border-2 mt-4 border-dotted grid place-items-center bg-transparent rounded-md relative ${
                   imageUrl && "pointer-events-none"
                }`}
                onUpload={handleImageUpload}
@@ -207,9 +206,14 @@ export default function CreatePostForm() {
 
             <select
                onChange={(e) => setSelectedCategory(e.target.value)}
-               className='w-full mt-2 px-6 py-4 text-text  border border-border'
+               className='w-full mt-2 px-6 py-4 text-text bg-main border rounded text-white'
             >
-               <option value=''>Select A Category</option>
+               <option
+                  value=''
+                  className='bg-white text-black'
+               >
+                  Select A Category
+               </option>
                {categories &&
                   categories.map((category) => (
                      <option
@@ -222,7 +226,7 @@ export default function CreatePostForm() {
             </select>
 
             <button
-               className='bg-gray-800 transitions hover:bg-white hover:text-gray-800 flex-rows gap-4 text-white p-4 rounded-lg w-full border border-border my-3'
+               className='bg-main transition-all hover:bg-transparent hover:text-main flex-rows gap-4 text-white p-4 rounded-lg w-full border border-border my-3'
                type='submit'
             >
                Create Post
