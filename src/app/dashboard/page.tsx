@@ -29,6 +29,8 @@ export default async function Dashboard() {
 
    if (email) {
       posts = await getPosts(email);
+      console.log("hello",posts);
+      
    }
 
    return (
@@ -40,7 +42,7 @@ export default async function Dashboard() {
                   <Post
                      key={post.id}
                      id={post.id}
-                     author={""}
+                     author={session.user?.name}
                      authorEmail={post.authorEmail}
                      date={post.createdAt}
                      thumbnail={post.imageUrl}
