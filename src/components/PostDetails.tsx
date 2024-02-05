@@ -36,6 +36,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    const [commentText, setCommentText] = useState<string>("");
    const [comments, setComments] = useState<TComment[]>([]);
 
+
    useEffect(() => {
       const fetchComments = async () => {
          try {
@@ -72,7 +73,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    };
 
    return (
-      <div className='my-4 border-b border-b-300 py-8'>
+      <div className='my-4  py-8'>
          <div className='mb-4'>
             {post.author ? (
                <>
@@ -83,8 +84,8 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                <>Posted on {formattedDate}</>
             )}
          </div>
-         <h2>{post.title}</h2>
-         <div className='w-full  min-h-[400px] relative'>
+         <h2 className='mt-6  py-4'>{post.title}</h2>
+         <div className='w-full  min-h-[400px] relative py-20'>
             {post.imageUrl ? (
                <Image
                   src={post.imageUrl}
@@ -101,15 +102,15 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                />
             )}
          </div>
-
+{/* 
          {post.category && (
             <Link
-               className='bg-slate-800 w-fit text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
+               className=' text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
                href={`categories/${post.category}`}
             >
                {post.category}
             </Link>
-         )}
+         )} */}
 
          <div dangerouslySetInnerHTML={{ __html: post.content }} />
 
@@ -133,8 +134,13 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          )}
 
          {isEditable && (
-            <div className='flex gap-5 font-bold py-2 px-4 rounded-md bg-slate-200 w-fit'>
-               <Link href={`/edit-post/${post.id}`}>Edit</Link>
+            <div className='flex gap-5 font-bold py-2 px-4 rounded-md  w-fit mb-10'>
+               <Link
+                  href={`/edit-post/${post.id}`}
+                  className='bg-main p-2 rounded text-white'
+               >
+                  Edit
+               </Link>
                <DeleteButton id={post.id} />
             </div>
          )}
@@ -150,11 +156,11 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                value={commentText}
                onChange={(e) => setCommentText(e.target.value)}
                placeholder='that was awesome'
-               className='w-[400px] text-sm p-2 border border-border rounded text-black'
+               className='w-[400px] text-sm p-2 border border-border rounded text-black dark:text-white  bg-transparent'
             />
             <button
                type='submit'
-               className='p-2 border border-border rounded'
+               className='p-2 border border-border rounded bg-black dark:bg-main text-white dark:text-black -ml-2'
             >
                <IoMdSend />
             </button>
@@ -166,8 +172,8 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                className=' gap-3 flex flex-col p-4 min-w-max'
                key={comment.id}
             >
-               <h5>{comment.user.name}</h5>
-               <p className='ml-3 '>{comment.content}</p>
+               <h5 className="text-black/40 dark:text-white/50">{comment.user.name}</h5>
+               <p className='ml-3 border-l-4 rounded p-4 pl-10'>{comment.content}</p>
             </div>
          ))}
       </div>
