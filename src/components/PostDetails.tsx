@@ -36,7 +36,6 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    const [commentText, setCommentText] = useState<string>("");
    const [comments, setComments] = useState<TComment[]>([]);
 
-
    useEffect(() => {
       const fetchComments = async () => {
          try {
@@ -102,7 +101,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                />
             )}
          </div>
-{/* 
+         {/* 
          {post.category && (
             <Link
                className=' text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
@@ -172,8 +171,12 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                className=' gap-3 flex flex-col p-4 min-w-max'
                key={comment.id}
             >
-               <h5 className="text-black/40 dark:text-white/50">{comment.user.name}</h5>
-               <p className='ml-3 border-l-4 rounded p-4 pl-10'>{comment.content}</p>
+               <h5 className='text-black/40 dark:text-white/50'>
+                  {comment.user.name}
+               </h5>
+               <p className='ml-3 border-l-4 rounded p-4 pl-10'>
+                  {comment.content}
+               </p>
             </div>
          ))}
       </div>
