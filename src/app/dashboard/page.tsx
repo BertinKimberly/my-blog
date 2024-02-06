@@ -29,8 +29,6 @@ export default async function Dashboard() {
 
    if (email) {
       posts = await getPosts(email);
-      console.log("hello",posts);
-      
    }
 
    return (

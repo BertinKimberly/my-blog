@@ -3,6 +3,7 @@ import Post from "@/components/Post";
 import { TPost } from "../types";
 import { Suspense } from "react";
 import Loading from "./loading";
+import toast from "react-hot-toast";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -15,7 +16,7 @@ const getPosts = async (): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
    }
 
    return null;

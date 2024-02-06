@@ -13,7 +13,6 @@ export async function GET(
     const post = await prisma.post.findUnique({ where: { id } });
     return NextResponse.json(post);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Could not fetch post" });
   }
 }
@@ -45,7 +44,6 @@ export async function PUT(
     });
     return NextResponse.json(post);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Error editing post" });
   }
 }
@@ -65,7 +63,6 @@ export async function DELETE(
     const post = await prisma.post.delete({ where: { id } });
     return NextResponse.json(post);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Error deleting the post" });
   }
 }

@@ -5,6 +5,7 @@ import { NextAuthProvider } from "@/components/Providers";
 import Layout from "@/components/Layout";
 import Script from "next/script";
 import { cx } from "@/utils";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
    subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
                   <main className='mx-auto container min-h-[80vh] '>
                      {children}
                   </main>
+                  <Toaster position='bottom-right' />
                </Layout>
             </NextAuthProvider>
          </body>

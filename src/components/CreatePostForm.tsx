@@ -34,7 +34,6 @@ export default function CreatePostForm() {
    }, []);
 
    const handleImageUpload = (result: CldUploadWidgetResults) => {
-      console.log("result: ", result);
       const info = result.info as object;
 
       if ("secure_url" in info && "public_id" in info) {
@@ -42,8 +41,6 @@ export default function CreatePostForm() {
          const public_id = info.public_id as string;
          setImageUrl(url);
          setPublicId(public_id);
-         console.log("url: ", url);
-         console.log("public_id: ", public_id);
       }
    };
 
@@ -74,7 +71,7 @@ export default function CreatePostForm() {
             setPublicId("");
          }
       } catch (error) {
-         console.log(error);
+         toast.error("Failed To upload ");
       }
    };
 
@@ -111,7 +108,7 @@ export default function CreatePostForm() {
             toast.error("Something went wrong.");
          }
       } catch (error) {
-         console.log(error);
+         toast.error("Something went wrong.");
       }
    };
 

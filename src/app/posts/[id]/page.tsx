@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import PostDetails from "@/components/PostDetails";
 import { TPost } from "@/app/types";
-
+import toast from "react-hot-toast";
 
 const getPostById = async (id: string) => {
    try {
@@ -12,37 +12,27 @@ const getPostById = async (id: string) => {
       });
 
       if (!res.ok) {
-         console.error("Error: Post not found");
+         toast.error("Post not found");
       } else {
-   
-         console.log("HOW GREAT IS OUR GOD", res);
-
          return res.json();
       }
    } catch (error) {
-      console.error("Error fetching post:", error);
+      toast.error("Error fetching post");
    }
 };
 
-
 export default async function Page({ params }: { params: { id: string } }) {
    try {
-      console.log("Fetching post details for id:", params.id);
-
-     
       const post: TPost | null = await getPostById(params.id);
 
-     
       const session = await getServerSession(authOptions);
 
-     
       const isEditable = session?.user?.email === post?.authorEmail;
 
       if (!post) {
          return <div>Error: Post not found</div>;
       }
 
-     
       return (
          <PostDetails
             post={post}
@@ -50,7 +40,7 @@ export default async function Page({ params }: { params: { id: string } }) {
          />
       );
    } catch (error) {
-      console.error("Error in PostDetailsPage:", error);
+      toast.error("Error");
       return <div>Error in fetching post details</div>;
    }
 }

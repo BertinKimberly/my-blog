@@ -36,7 +36,7 @@ export async function POST(req: Request) {
       },
     });
 
-    console.log("Post created");
+  
     return NextResponse.json(newPost);
   } catch (error) {
     return NextResponse.json({ message: "Could not create post." });
@@ -55,7 +55,6 @@ export async function GET() {
 
     return NextResponse.json(posts);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Some error occured" },
       { status: 500 }

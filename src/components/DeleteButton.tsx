@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function DeleteButton({ id }: { id: string }) {
    const router = useRouter();
    const deleteImage = async (publicId: string) => {
-      const res = await fetch("/api/removeImage", {
+      await fetch("/api/removeImage", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify({ publicId }),
@@ -28,7 +28,6 @@ export default function DeleteButton({ id }: { id: string }) {
             });
 
             if (res.ok) {
-               console.log("Post deleted");
                const post = await res.json();
                const { publicId } = post;
                await deleteImage(publicId);
@@ -38,7 +37,6 @@ export default function DeleteButton({ id }: { id: string }) {
             }
          } catch (error) {
             toast.error("Something went wrong");
-            console.log(error);
          }
       }
    };

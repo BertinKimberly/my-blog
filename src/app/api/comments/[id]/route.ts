@@ -18,7 +18,7 @@ export async function GET(
     });
     return NextResponse.json(comments);
   } catch (error) {
-    console.log(error);
+
     return NextResponse.json({ message: "Could not fetch comments" });
   }
 }
@@ -38,7 +38,6 @@ export async function DELETE(
     const comment = await prisma.comment.delete({ where: { id: commentId } });
     return NextResponse.json(comment);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Error deleting the comment" });
   }
 }

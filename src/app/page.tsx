@@ -4,6 +4,7 @@ import PopularPosts from "@/components/PopularPosts";
 import Image from "next/image";
 import Bible from "../../public/images/bible.png";
 import FeaturedPosts from "@/components/FeaturedPosts";
+import toast from "react-hot-toast";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -16,7 +17,7 @@ const getPosts = async (): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      console.log(error);
+      toast.error("Error in fetching posts");
    }
 
    return null;

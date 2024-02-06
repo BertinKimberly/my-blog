@@ -72,8 +72,6 @@ export default function EditPostForm({ post }: { post: TPost }) {
          const public_id = info.public_id as string;
          setImageUrl(url);
          setPublicId(public_id);
-         console.log("url: ", url);
-         console.log("public_id: ", public_id);
       }
    };
 
@@ -92,7 +90,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
             setPublicId("");
          }
       } catch (error) {
-         console.log(error);
+         toast.error("Error in uploading");
       }
    };
 
@@ -127,7 +125,6 @@ export default function EditPostForm({ post }: { post: TPost }) {
          }
       } catch (error) {
          toast.error("Something went wrong");
-         console.log(error);
       }
    };
 

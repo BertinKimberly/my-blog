@@ -6,6 +6,7 @@ import { CiLink } from "react-icons/ci";
 import { FormEvent, useEffect, useState } from "react";
 import { TComment } from "@/app/types";
 import { IoMdSend } from "react-icons/io";
+import toast from "react-hot-toast";
 
 interface PostDetailsProps {
    post: {
@@ -43,7 +44,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
             const data = await response.json();
             setComments(data);
          } catch (error) {
-            console.error("Error fetching comments", error);
+            toast.error("Error fetching comments");
          }
       };
       fetchComments();
@@ -67,7 +68,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          const newComment = await response.json();
          setComments([...comments, newComment]);
       } catch (error) {
-         console.error("Error submitting comment", error);
+         toast.error("Error submitting comment");
       }
    };
 
@@ -172,7 +173,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                key={comment.id}
             >
                <h5 className='text-black/40 dark:text-white/50'>
-                  {comment.user.name}
+                  {comment.user && comment.user.name}
                </h5>
                <p className='ml-3 border-l-4 rounded p-4 pl-10'>
                   {comment.content}

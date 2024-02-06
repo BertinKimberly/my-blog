@@ -5,7 +5,7 @@ import prisma from "../../../../lib/prismadb";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
-console.log("session",session);
+
 
   if (!session) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
@@ -31,10 +31,9 @@ console.log("session",session);
       },
     });
 
-    console.log("Comment created");
-    return NextResponse.json(newComment);
+
+    return NextResponse.json({message:"Comment Created",newComment});
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Something went wrong!" },
       { status: 500 }
@@ -53,7 +52,6 @@ export async function GET() {
 
     return NextResponse.json(comments);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Some error occurred while fetching comments" },
       { status: 500 }

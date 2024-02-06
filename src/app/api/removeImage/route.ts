@@ -1,5 +1,6 @@
 import cloudinary from "cloudinary";
 import { NextResponse } from "next/server";
+import toast from 'react-hot-toast';
 
 cloudinary.v2.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -9,10 +10,10 @@ cloudinary.v2.config({
 
 const removeImage = async (publicId: string) => {
   try {
-    const res = await cloudinary.v2.uploader.destroy(publicId);
-    console.log("image removed");
+   await cloudinary.v2.uploader.destroy(publicId);
+    toast.success("image removed")
   } catch (error) {
-    console.log(error);
+   toast.error("Error in removing an image")
   }
 };
 

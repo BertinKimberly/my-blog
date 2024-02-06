@@ -1,5 +1,6 @@
 import { TPost } from "@/app/types";
 import Post from "@/components/Post";
+import toast from "react-hot-toast";
 
 const getPosts = async (catName: string): Promise<TPost[] | null> => {
    try {
@@ -14,7 +15,8 @@ const getPosts = async (catName: string): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      console.log(error);
+      toast.error("Error in fetching posts")
+     
    }
 
    return null;

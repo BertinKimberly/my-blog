@@ -17,7 +17,6 @@ export async function GET(
 
     return NextResponse.json(posts);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Could not fetch post" });
   }
 }
