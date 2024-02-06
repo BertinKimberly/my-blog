@@ -8,15 +8,15 @@
 h1 {
    font-size: large;
 }
-h2,
-h3,
-h4,
-h5 {
-   font: normal;
-}
 p {
    font-size: 16px;
 }
 body {
    font-family: Roboto, "sans-serif";
+}
+h1{
+   
+}
+h2 {
+   @apply mt-6  py-4 text-lg font-bold;
 }

@@ -17,9 +17,17 @@ const config: Config = {
       colors:{
         "main":"#333",
         "subMain":"#272727" ,
+        dark: "#1b1b1b",
+        light: "#fff",
+        accent: "#ffffffac",
+        accentDark: "#ffffff54",
+        gray: "#747474",
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    
+  ],
 }
 export default config
