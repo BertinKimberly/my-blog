@@ -12,12 +12,8 @@ const Footer = () => {
                link: "/",
             },
             {
-               name: "About Us",
+               name: "About",
                link: "/about",
-            },
-            {
-               name: "Contact ",
-               link: "/contact",
             },
             {
                name: "Posts",
@@ -29,33 +25,38 @@ const Footer = () => {
          title: "Categories",
          links: [
             {
-               name: "New Testament",
-               link: "/movies?category=New Testament",
+               name: "Heroes Of The Bible",
+               link: "/categories/Heroes Of The Bible",
             },
             {
-               name: "Old Testament",
-               link: "/movies?category=Old Testament",
+               name: "Faith",
+               link: "/categories/Faith",
+            },
+            {
+               name: "Prayer",
+               link: "/categories/Prayer",
+            },
+            {
+               name: "Christian Living",
+               link: "/categories/Christian Living",
+            },
+            {
+               name: "Christian music and art",
+               link: "/categories/Christian music and art",
             },
          ],
       },
       {
-         title: "My Account",
+         title: "Me",
          links: [
             {
                name: "Dashboard",
                link: "/dashboard",
             },
+
             {
-               name: "My Favorite",
-               link: "/favorite",
-            },
-            {
-               name: "Profile",
-               link: "/profile",
-            },
-            {
-               name: "Change Password",
-               link: "/password",
+               name: "Create New Post",
+               link: "/create-post",
             },
          ],
       },
@@ -69,7 +70,7 @@ const Footer = () => {
                      key={index}
                      className='col-span-1 md:col-span-2 lg:col-span-3 pb-3.5 sm:pb-0'
                   >
-                     <h3 className='text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5 text-border'>
+                     <h3 className='text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5 text-subMain'>
                         {link.title}
                      </h3>
                      <ul className='text-sm flex flex-col space-y-3'>
@@ -80,7 +81,7 @@ const Footer = () => {
                            >
                               <Link
                                  href={text.link}
-                                 className='inline-block w-full hover:text-subMain'
+                                 className='inline-block w-full hover:underline transition duration-300 ease-in'
                               >
                                  {text.name}
                               </Link>
@@ -94,10 +95,10 @@ const Footer = () => {
                      href='/'
                      className='text-border'
                   >
-                     BERTIN
+                     Glog
                   </Link>
                   <p className='leading-7 text-sm mt-3'>
-                     <span>Bertin's personal blog</span>
+                     <span>Know More About Gospel </span>
                      <br />
                      <span>Kigali-Rwanda</span>
                      <br />

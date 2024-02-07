@@ -35,7 +35,7 @@ export default function RootLayout({
             className={cx(
                inter.variable,
                manrope.variable,
-               "font-mr bg-light dark:bg-black dark:text-white"
+               "font-mr bg-white/5 dark:bg-black dark:text-white"
             )}
          >
             <Script

@@ -5,18 +5,18 @@
 .container {
    @apply px-[0.8rem] sm:px-[2rem] md:px-[5rem];
 }
-h1 {
-   font-size: large;
-}
+
 p {
-   font-size: 16px;
+   font-size: 20px;
 }
-body {
-   font-family: Roboto, "sans-serif";
-}
-h1{
-   
+
+h1 {
+   @apply mt-2 text-2xl  font-bold;
 }
 h2 {
    @apply mt-6  py-4 text-lg font-bold;
+}
+
+body{
+   @apply  bg-[url('../../public/images/texture.png')]
 }

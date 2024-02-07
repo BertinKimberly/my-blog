@@ -7,6 +7,9 @@ import { FormEvent, useEffect, useState } from "react";
 import { TComment } from "@/app/types";
 import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface PostDetailsProps {
    post: {
@@ -49,6 +52,15 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       };
       fetchComments();
    }, []);
+   const isAuthenticated = async () => {
+      try {
+         const session = await getServerSession(authOptions);
+         return !!session;
+      } catch (error) {
+         console.error("Error checking authentication:", error);
+         return false;
+      }
+   };
 
    const handleCommentSubmit = async (e: FormEvent) => {
       e.preventDefault();
@@ -58,6 +70,12 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          return;
       }
 
+      const isLoggedIn = await isAuthenticated();
+
+      if (!isLoggedIn) {
+         toast.error("You need to be logged in to comment");
+         return;
+      }
       try {
          const response = await fetch("/api/comments", {
             method: "POST",
@@ -107,7 +125,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                />
             )}
          </div>
-{/* 
+         {/* 
          {post.category && (
             <Link
                className=' text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
@@ -117,7 +135,6 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
             </Link>
          )} */}
 
-         
          <div
             className='pt-20 prose sm:prose-base md:prose-lg max-w-max
     prose-blockquote:bg-accent/20 

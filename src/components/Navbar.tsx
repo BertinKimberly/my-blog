@@ -45,12 +45,12 @@ export default function Navbar() {
                onClick={() => setToggleMenu(true)}
             >
                <h1 className='text-dark text-2xl font-bold tracking-tighter'>
-                  BERTIN
+                  Glog
                </h1>
             </Link>
          </div>
          <div
-            className={` flex items-center gap-4 ${
+            className={` flex items-center gap-4 capitalize ${
                toggleMenu
                   ? "hidden md:flex"
                   : "flex-col absolute top-[100px] right-4 p-2 z-50  md:flex-row md:static "
@@ -60,19 +60,19 @@ export default function Navbar() {
                href={"/posts"}
                onClick={handleMenu}
             >
-               Posts
+               POSTS
             </Link>
             <Link
                href={"/about"}
                onClick={handleMenu}
             >
-               About
+               ABOUT
             </Link>
             {status === "authenticated" ? (
                <>
                   <div
                      ref={popupRef}
-                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-2 text-left min-w-[160px] bg-white dark:bg-black ${
+                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-4 text-left min-w-[180px] bg-white dark:bg-black ${
                         isPopupVisible ? "flex" : "hidden"
                      }`}
                   >
@@ -122,7 +122,7 @@ export default function Navbar() {
                         href={"/create-post"}
                      >
                         <FaPlus />
-                        <span>Create new</span>
+                        <span>CREATE NEW</span>
                      </Link>
                      <Image
                         src={session?.user?.image || ""}
@@ -141,7 +141,7 @@ export default function Navbar() {
                      href={"/sign-in"}
                      onClick={handleMenu}
                   >
-                     Sign In
+                     SIGN IN
                   </Link>
                </div>
             )}

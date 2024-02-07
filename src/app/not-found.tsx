@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export default function NotFound() {
    return (
-      <section className='my-32 w-full dark:bg-dark flex justify-center '>
+      <section className='my-32 w-full  flex justify-center '>
          <div className='relative flex flex-col items-center justify-center'>
             <h1
-               className={`inline-block text-dark dark:text-light
+               className={`inline-block 
       text-6xl font-bold w-full capitalize xl:text-8xl text-center`}
             >
                Oops
             </h1>
             <h2
-               className={`inline-block text-dark dark:text-light
+               className={`inline-block 
       text-5xl font-bold w-full capitalize xl:text-6xl text-center mt-4 tracking-wide leading-snug`}
             >
                Page Not Found!

@@ -28,7 +28,7 @@ export default async function Posts() {
       <>
          <CategoriesList />
          <Suspense fallback={<Loading />}>
-            <div className='grid sm:mt-12 mt-6 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10'>
+            <div className='grid sm:mt-12 mt-6 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 py-6 mb-20'>
                {posts && posts.length > 0 ? (
                   posts.map((post: TPost) => (
                      <Post

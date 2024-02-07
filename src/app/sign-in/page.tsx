@@ -4,11 +4,15 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 export default async function SignIn() {
-  const session = await getServerSession(authOptions);
+   const session = await getServerSession(authOptions);
 
-  if (session) {
-    redirect("/dashboard");
-  }
+   if (session) {
+      redirect("/dashboard");
+   }
 
-  return <SignInBtns />;
+   return (
+      <div className='flex items-center justify-center min-h-[80vh] w-full flex-col gap-5'>
+         <SignInBtns />
+      </div>
+   );
 }

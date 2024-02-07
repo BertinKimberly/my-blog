@@ -24,9 +24,9 @@ export default async function Post({
    links,
 }: PostProps) {
    return (
-      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-subMain border  '>
+      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-subMain border  hover:scale-95 transition duration-300 ease-in'>
          <h1>{title}</h1>
-         <div className='border border-border p-1 relative  transition rounded overflow-hidden  h-[300px]'>
+         <div className='border border-border p-1 relative  transition rounded overflow-hidden  h-[300px] '>
             <Link
                href={`/posts/${id}`}
                className='w-full h-[300px] '
@@ -47,7 +47,7 @@ export default async function Post({
                   />
                )}
             </Link>
-            <div className='flex absolute justify-between gap-2 bottom-0 right-0 bg-white text-white  left-0 dark:bg-subMain bg-opacity-60 dark:text-white px-4 py-3 '>
+            <div className='flex absolute justify-center gap-2 bottom-0 right-0 bg-white text-white  left-0 dark:bg-subMain bg-opacity-60 dark:text-white px-4 py-3 '>
                <button>
                   <Link
                      href={`/posts/${id}`}
@@ -56,12 +56,6 @@ export default async function Post({
                      Read More
                   </Link>
                </button>
-               <Link
-                  href={`/posts/${id}`}
-                  className='text-black dark:text-white'
-               >
-                  <FaThumbsUp />
-               </Link>
             </div>
          </div>
          {links && (
