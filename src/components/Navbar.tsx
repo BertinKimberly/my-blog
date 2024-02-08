@@ -38,7 +38,7 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b dark:bg-black'>
+      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b dark:bg-nav'>
          <div>
             <Link
                href={"/"}
@@ -72,7 +72,7 @@ export default function Navbar() {
                <>
                   <div
                      ref={popupRef}
-                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-4 text-left min-w-[180px] bg-white dark:bg-black ${
+                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-4 text-left min-w-[180px] bg-white dark:bg-nav ${
                         isPopupVisible ? "flex" : "hidden"
                      }`}
                   >

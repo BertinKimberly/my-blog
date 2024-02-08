@@ -1,6 +1,7 @@
 import { TPost } from "@/app/types";
 import Post from "@/components/Post";
 import toast from "react-hot-toast";
+import Skeleton from "react-loading-skeleton";
 
 const getPosts = async (catName: string): Promise<TPost[] | null> => {
    try {
@@ -15,8 +16,7 @@ const getPosts = async (catName: string): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      toast.error("Error in fetching posts")
-     
+      toast.error("Error in fetching posts");
    }
 
    return null;
@@ -34,7 +34,7 @@ export default async function CategoryPosts({
       <>
          <h1>
             <span className='font-normal'>Category: </span>{" "}
-            {decodeURIComponent(category)}
+            {decodeURIComponent(category) || <Skeleton />}
          </h1>
          <div className='grid sm:mt-12 mt-6 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10'>
             {posts && posts.length > 0 ? (

@@ -16,7 +16,3 @@ h1 {
 h2 {
    @apply mt-6  py-4 text-lg font-bold;
 }
-
-body{
-   @apply  bg-[url('../../public/images/texture.png')]
-}

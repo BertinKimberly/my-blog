@@ -17,8 +17,9 @@ const config: Config = {
       colors:{
         "main":"#333",
         "subMain":"#272727" ,
-        dark: "#1b1b1b",
+        dark: "#161b22",
         light: "#fff",
+        nav:"#1f2328",
         accent: "#ffffffac",
         accentDark: "#ffffff54",
         gray: "#747474",
