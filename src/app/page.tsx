@@ -43,7 +43,7 @@ export default async function Home() {
                      teachings. Explore a journey of spiritual growth and
                      enlightenment with our diverse content. Join our community
                      as we share the timeless wisdom that guides us through
-                     life&apos;s challenges. Let the power of gospel illuminate your
+                     life&#39;s challenges. Let the power of gospel illuminate your
                      path. Blessings await!
                   </p>
                </div>

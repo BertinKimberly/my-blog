@@ -19,12 +19,12 @@ const About = () => {
                <div className='mt-3 text-sm leading-8 text-text'>
                   <p>
                      Glog, your gateway to the world of inspirational
-                     information! I&apos;m thrilled to introduce you to our
-                     one-of-a-kind application that&apos;s designed to uplift
+                     information! I&#39;m thrilled to introduce you to our
+                     one-of-a-kind application that&#39;s designed to uplift
                      your spirit and fill your heart with the joy .
                   </p>
                   <p>
-                     This Blog is not just an app; it&apos;s a platform that
+                     This Blog is not just an app; it&#39;s a platform that
                      brings the power of gospel stories to your fingertips. With
                      a vast library of handpicked, faith-based stories, we aim
                      to inspire, entertain, and strengthen your connection with
