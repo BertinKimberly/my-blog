@@ -1,15 +1,19 @@
 "use client";
-import { GridLoader } from "react-spinners";
+import { useState, useEffect } from 'react';
+import { GridLoader } from 'react-spinners';
 
 function Loader() {
-   const checkTheme = (): string => {
+   const [color, setColor] = useState("#161b22"); 
+
+   useEffect(() => {
       const theme = window.localStorage.getItem("theme");
-      return theme === "light" ? "#161b22" : "#fff";
-   };
+      const color = theme === "light" ? "#161b22" : "#fff";
+      setColor(color);
+   }, []);
 
    return (
-      <div className='w-full  flex flex-col justify-center items-center'>
-         <GridLoader color={checkTheme()} />
+      <div className='w-full flex flex-col justify-center items-center'>
+         <GridLoader color={color} />
       </div>
    );
 }
