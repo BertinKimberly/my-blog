@@ -3,7 +3,7 @@ import { GridLoader } from "react-spinners";
 
 function Loader() {
    const checkTheme = (): string => {
-      const theme = localStorage.getItem("theme");
+      const theme = window.localStorage.getItem("theme");
       return theme === "light" ? "#161b22" : "#fff";
    };
 

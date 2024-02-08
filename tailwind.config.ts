@@ -19,6 +19,7 @@ const config: Config = {
         "subMain":"#272727" ,
         dark: "#161b22",
         light: "#fff",
+        bl:"#0000ff",
         nav:"#1f2328",
         accent: "#ffffffac",
         accentDark: "#ffffff54",

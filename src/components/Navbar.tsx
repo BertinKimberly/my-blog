@@ -1,5 +1,5 @@
 "use client";
-
+import logo from "../../public/logo.png";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
@@ -43,8 +43,14 @@ export default function Navbar() {
             <Link
                href={"/"}
                onClick={() => setToggleMenu(true)}
+               className='flex gap-1 items-center'
             >
-               <h1 className='text-dark text-2xl font-bold tracking-tighter'>
+               <Image
+                  src={logo}
+                  alt='Glog'
+                  className='w-[100px] h-[100px] '
+               />
+               <h1 className='text-dark dark:text-white text-2xl font-bold -ml-8'>
                   Glog
                </h1>
             </Link>
