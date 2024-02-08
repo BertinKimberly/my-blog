@@ -1,9 +1,9 @@
 import { TPost } from "@/app/types";
 import EditPostForm from "@/components/EditPostForm";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { authOptions } from "../../../../lib/authOptions";
 
 
 export const metadata = {

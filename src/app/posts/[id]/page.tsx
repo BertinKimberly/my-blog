@@ -1,9 +1,9 @@
 // Import necessary modules
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import PostDetails from "@/components/PostDetails";
 import { TPost } from "@/app/types";
 import toast from "react-hot-toast";
+import { authOptions } from "../../../../lib/authOptions";
 
 const getPostById = async (id: string) => {
    try {

@@ -8,7 +8,8 @@ import { TComment } from "@/app/types";
 import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../../lib/authOptions";
+
 
 interface PostDetailsProps {
    post: {
