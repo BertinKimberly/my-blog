@@ -56,7 +56,7 @@ export default function Navbar() {
             </Link>
          </div>
          <div
-            className={` flex items-center gap-4 capitalize ${
+            className={` flex items-center gap-4 capitalize bg-white p-5 md:p-0 dark:bg-nav md:bg-transparent ${
                toggleMenu
                   ? "hidden md:flex"
                   : "flex-col absolute top-[100px] right-4 p-2 z-50  md:flex-row md:static "

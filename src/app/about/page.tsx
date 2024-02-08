@@ -19,15 +19,15 @@ const About = () => {
                <div className='mt-3 text-sm leading-8 text-text'>
                   <p>
                      Glog, your gateway to the world of inspirational
-                     information! I'm thrilled to introduce you to our
-                     one-of-a-kind application that's designed to uplift your
-                     spirit and fill your heart with the joy .
+                     information! I&apos;m thrilled to introduce you to our
+                     one-of-a-kind application that&apos;s designed to uplift
+                     your spirit and fill your heart with the joy .
                   </p>
                   <p>
-                     This Blog is not just an app; it's a platform that brings
-                     the power of gospel stories to your fingertips. With a vast
-                     library of handpicked, faith-based stories, we aim to
-                     inspire, entertain, and strengthen your connection with
+                     This Blog is not just an app; it&apos;s a platform that
+                     brings the power of gospel stories to your fingertips. With
+                     a vast library of handpicked, faith-based stories, we aim
+                     to inspire, entertain, and strengthen your connection with
                      your beliefs.
                   </p>
                </div>
@@ -54,7 +54,7 @@ const About = () => {
                <div className='mt-10 lg:mt-0'>
                   <Image
                      src={AboutImg}
-                     alt='aboutme'
+                     alt='about Glog'
                      className='w-full xl:block hidden h-header rounded-lg object-cover'
                   />
                </div>
