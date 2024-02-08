@@ -3,6 +3,10 @@ import Post from "@/components/Post";
 import { TPost } from "../types";
 import toast from "react-hot-toast";
 
+export const metadata = {
+   title: "All Posts ",
+   description: `All posts are available here`,
+};
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {

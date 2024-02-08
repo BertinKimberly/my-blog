@@ -5,6 +5,11 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
+
+export const metadata = {
+   title: "Edit Post ",
+   description: `Edit A Post`,
+ };
 const getPost = async (id: string): Promise<TPost | null> => {
    try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${id}`, {

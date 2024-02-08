@@ -70,7 +70,7 @@ const Footer = () => {
                      key={index}
                      className='col-span-1 md:col-span-2 lg:col-span-3 pb-3.5 sm:pb-0'
                   >
-                     <h3 className='text-xl lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5 text-white'>
+                     <h3 className='text-xl lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5 text-dark dark:text-white'>
                         {link.title}
                      </h3>
                      <ul className='text-sm flex flex-col space-y-3'>

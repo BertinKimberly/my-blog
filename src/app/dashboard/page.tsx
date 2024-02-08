@@ -5,6 +5,10 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { TPost } from "../types";
 
+export const metadata = {
+   title: "Dashboard ",
+   description: `User's Dashboard`,
+ };
 const getPosts = async (email: string) => {
    try {
       const res = await fetch(

@@ -2,9 +2,14 @@
 import { GridLoader } from "react-spinners";
 
 function Loader() {
+   const checkTheme = (): string => {
+      const theme = localStorage.getItem("theme");
+      return theme === "light" ? "#161b22" : "#fff";
+   };
+
    return (
       <div className='w-full  flex flex-col justify-center items-center'>
-         <GridLoader color='#36d7b7' />
+         <GridLoader color={checkTheme()} />
       </div>
    );
 }

@@ -3,6 +3,10 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+   title: "Sign In  ",
+   description: `Sign In For Glog`,
+};
 export default async function SignIn() {
    const session = await getServerSession(authOptions);
 

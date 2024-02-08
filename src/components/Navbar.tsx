@@ -121,7 +121,6 @@ export default function Navbar() {
                         className='hidden md:flex gap-2 items-center mr-6'
                         href={"/create-post"}
                      >
-                        <FaPlus />
                         <span>CREATE NEW</span>
                      </Link>
                      <Image

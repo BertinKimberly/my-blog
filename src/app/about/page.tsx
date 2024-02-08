@@ -1,6 +1,11 @@
 import React from "react";
 import Me from "../../../public/images/bertin.png";
 import Image from "next/image";
+
+export const metadata = {
+   title: "About ",
+   description: `Here are some details about Glog`,
+ };
 const About = () => {
    return (
       <div className='min-height-screen container mx-auto px-2 my-6'>
