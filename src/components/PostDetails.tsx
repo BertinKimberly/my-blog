@@ -8,19 +8,20 @@ import { TComment } from "@/app/types";
 import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface PostDetailsProps {
    post: {
       id: string;
-      author: string;
+      author: {
+         name: string;
+      };
       createdAt: string;
       imageUrl?: string;
       authorEmail?: string;
       title: string;
       content: string;
-      links?: string[];
+      links?: null | string[];
       category?: string;
    };
    isEditable?: boolean;
@@ -33,7 +34,9 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       day: "numeric",
       year: "numeric",
    };
-   const formattedDate = dateObject.toLocaleDateString("en-US", options);
+   const formattedDate = dateObject
+      ? dateObject.toLocaleDateString("en-US", options)
+      : "";
 
    //comments
 
@@ -100,7 +103,8 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          <div className='mb-4'>
             {post.author ? (
                <>
-                  Posted by: <span className='font-bold'>{post.author}</span> on{" "}
+                  Posted by:{" "}
+                  <span className='font-bold'>{post.author.name}</span> on{" "}
                   {formattedDate}
                </>
             ) : (

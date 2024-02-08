@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CiLink } from "react-icons/ci";
-import { FaThumbsUp } from "react-icons/fa";
 
 interface PostProps {
    id: string;
@@ -23,6 +22,7 @@ export default async function Post({
    title,
    links,
 }: PostProps) {
+   const postAuthor = author || "Anonymous";
    return (
       <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-subMain border  hover:scale-95 transition duration-300 ease-in'>
          <h1 className='text-bl'>{title} </h1>
@@ -76,7 +76,7 @@ export default async function Post({
                ))}
             </div>
          )}
-         <p className='text-dark dark:text-white'>By {author}</p>
+         <p className='text-dark dark:text-white'>By {postAuthor}</p>
       </div>
    );
 }

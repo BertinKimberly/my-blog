@@ -8,7 +8,7 @@ import { TPost } from "../types";
 export const metadata = {
    title: "Dashboard ",
    description: `User's Dashboard`,
- };
+};
 const getPosts = async (email: string) => {
    try {
       const res = await fetch(
@@ -44,7 +44,7 @@ export default async function Dashboard() {
                   <Post
                      key={post.id}
                      id={post.id}
-                     author={session.user?.name}
+                     author={session?.user?.name as string}
                      authorEmail={post.authorEmail}
                      date={post.createdAt}
                      thumbnail={post.imageUrl}

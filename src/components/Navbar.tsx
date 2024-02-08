@@ -3,8 +3,8 @@ import logo from "../../public/logo.png";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { FaBars, FaMoon, FaPlus, FaSun, FaTimes } from "react-icons/fa";
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
+import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 import { cx } from "@/utils";
 import { useThemeSwitch } from "@/hooks/useThemeSwitch";
 
@@ -16,7 +16,10 @@ export default function Navbar() {
 
    //theme
 
-   const [mode, setMode] = useThemeSwitch();
+   const [mode, setMode] = useThemeSwitch() as [
+      string,
+      Dispatch<SetStateAction<string>>
+   ];
 
    const handleMenu = () => setToggleMenu((prev) => !prev);
    useEffect(() => {
