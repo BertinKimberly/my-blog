@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
    const Links = [
       {
-         title: "Company",
+         title: "Pages",
          links: [
             {
                name: "Home",

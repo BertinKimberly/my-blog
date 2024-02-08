@@ -1,11 +1,11 @@
 import React from "react";
-import Me from "../../../public/images/bertin.png";
+import AboutImg from "../../../public/images/about.jpg";
 import Image from "next/image";
 
 export const metadata = {
    title: "About ",
    description: `Here are some details about Glog`,
- };
+};
 const About = () => {
    return (
       <div className='min-height-screen container mx-auto px-2 my-6'>
@@ -13,15 +13,15 @@ const About = () => {
             <div className='grid grid-flow-row xl:grid-cols-2 gap-4 xl:gap-16 items-center'>
                <div>
                   <h3 className='text-xl lg:text-3xl mb-4 font-semibold'>
-                     Welcome To My Blog
+                     Welcome Glog
                   </h3>
                </div>
                <div className='mt-3 text-sm leading-8 text-text'>
                   <p>
-                     Welcome to Bert's Blog, your gateway to the world of
-                     inspirational information! I'm thrilled to introduce you to
-                     our one-of-a-kind application that's designed to uplift
-                     your spirit and fill your heart with the joy .
+                     Glog, your gateway to the world of inspirational
+                     information! I'm thrilled to introduce you to our
+                     one-of-a-kind application that's designed to uplift your
+                     spirit and fill your heart with the joy .
                   </p>
                   <p>
                      This Blog is not just an app; it's a platform that brings
@@ -53,7 +53,7 @@ const About = () => {
                </div>
                <div className='mt-10 lg:mt-0'>
                   <Image
-                     src={Me}
+                     src={AboutImg}
                      alt='aboutme'
                      className='w-full xl:block hidden h-header rounded-lg object-cover'
                   />
