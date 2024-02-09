@@ -13,6 +13,7 @@ export async function GET(
       include: {
         posts: { include: { author: true }, orderBy: { createdAt: "desc" } },
       },
+      cacheStrategy: { ttl: 60 },
     });
 
     return NextResponse.json(posts);

@@ -3,10 +3,11 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import {PrismaAdapter} from '@next-auth/prisma-adapter';
 import prisma from "./prismadb";
+import { PrismaClient } from "@prisma/client/edge";
 
 
 export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma as unknown as PrismaClient) ,
  
   
   providers: [

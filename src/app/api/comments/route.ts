@@ -48,6 +48,7 @@ export async function GET() {
       orderBy: {
         createdAt: "desc",
       },
+      cacheStrategy: { ttl: 60 },
     });
 
     return NextResponse.json(comments);
