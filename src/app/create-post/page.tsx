@@ -7,7 +7,7 @@ export const metadata = {
    title: "Create A New Post ",
    description: `A page to Create a new post`,
  };
-export default async function CreatePost() {
+export default async function Page() {
    const session = await getServerSession(authOptions);
 
    if (!session) {

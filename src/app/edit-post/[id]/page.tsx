@@ -27,7 +27,7 @@ const getPost = async (id: string): Promise<TPost | null> => {
    return null;
 };
 
-export default async function EditPost({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
    const session = await getServerSession(authOptions);
 
    if (!session) {

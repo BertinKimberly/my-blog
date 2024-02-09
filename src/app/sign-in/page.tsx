@@ -7,7 +7,7 @@ export const metadata = {
    title: "Sign In  ",
    description: `Sign In For Glog`,
 };
-export default async function SignIn() {
+export default async function Page() {
    const session = await getServerSession(authOptions);
 
    if (session) {

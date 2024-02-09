@@ -21,7 +21,7 @@ const getPosts = async (email: string) => {
    }
 };
 
-export default async function Dashboard() {
+export default async function Page() {
    const session = await getServerSession(authOptions);
    const email = session?.user?.email;
 

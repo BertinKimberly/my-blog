@@ -1,7 +1,6 @@
 import CategoriesList from "@/components/CategoriesList";
 import Post from "@/components/Post";
 import { TPost } from "../types";
-import toast from "react-hot-toast";
 
 export const metadata = {
    title: "All Posts ",
@@ -18,13 +17,13 @@ const getPosts = async (): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      toast.error("Something went wrong");
+      console.error("Something went wrong");
    }
 
    return null;
 };
 
-export default async function Posts() {
+export default async function Page() {
    const posts = await getPosts();
    return (
       <>

@@ -21,7 +21,7 @@ const getPosts = async (catName: string): Promise<TPost[] | null> => {
    return null;
 };
 
-export default async function CategoryPosts({
+export default async function Page({
    params,
 }: {
    params: { catName: string };

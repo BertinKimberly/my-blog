@@ -1,10 +1,8 @@
-import { FaUser } from "react-icons/fa";
 import { TPost } from "./types";
 import PopularPosts from "@/components/PopularPosts";
 import Image from "next/image";
 import Bible from "../../public/images/bible.png";
 import FeaturedPosts from "@/components/FeaturedPosts";
-import toast from "react-hot-toast";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -17,13 +15,13 @@ const getPosts = async (): Promise<TPost[] | null> => {
          return posts;
       }
    } catch (error) {
-      toast.error("Error in fetching posts");
+      console.error("Error in fetching posts");
    }
 
    return null;
 };
 
-export default async function Home() {
+export default async function Page() {
    const posts = await getPosts();
    return (
       <>
@@ -43,8 +41,8 @@ export default async function Home() {
                      teachings. Explore a journey of spiritual growth and
                      enlightenment with our diverse content. Join our community
                      as we share the timeless wisdom that guides us through
-                     life&#39;s challenges. Let the power of gospel illuminate your
-                     path. Blessings await!
+                     life&#39;s challenges. Let the power of gospel illuminate
+                     your path. Blessings await!
                   </p>
                </div>
                <div className='flex items-center justify-center p-2 '>
