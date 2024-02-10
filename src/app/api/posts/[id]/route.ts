@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     const id = params.id;
-    const post = await prisma.post.findUnique({ where: { id } ,  cacheStrategy: { ttl: 60 },});
+    const post = await prisma.post.findUnique({ where: { id } ,  cacheStrategy: { ttl: 60,swr:10 },});
     return NextResponse.json(post);
   } catch (error) {
     return NextResponse.json({ message: "Could not fetch post" });

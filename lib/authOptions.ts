@@ -6,6 +6,8 @@ import prisma from "./prismadb";
 import { PrismaClient } from "@prisma/client/edge";
 
 
+
+
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma as unknown as PrismaClient) ,
  
