@@ -4,6 +4,8 @@ import Image from "next/image";
 import Bible from "../../public/images/bible.png";
 import FeaturedPosts from "@/components/FeaturedPosts";
 
+export const runtime = 'edge'
+
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts`, {
