@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/authOptions";
 
-
 interface PostDetailsProps {
    post: {
       id: string;
@@ -49,7 +48,9 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          try {
             const response = await fetch(`/api/comments?postId=${post.id}`);
             const data = await response.json();
-            setComments(data);
+            if (Array.isArray(data)) {
+               setComments(data);
+            }
          } catch (error) {
             toast.error("Error fetching comments");
          }
@@ -215,19 +216,23 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
             </form>
 
             {/* Display comments */}
-            {comments.map((comment) => (
-               <div
-                  className=' gap-3 flex flex-col p-4 min-w-max'
-                  key={comment.id}
-               >
-                  <h5 className='text-black/40 dark:text-white/50'>
-                     {comment.user && comment.user.name}
-                  </h5>
-                  <p className='ml-3 border-l-4 rounded p-4 pl-10'>
-                     {comment.content}
-                  </p>
-               </div>
-            ))}
+            {comments.length > 0 ? (
+               comments.map((comment) => (
+                  <div
+                     className=' gap-3 flex flex-col p-4 min-w-max'
+                     key={comment.id}
+                  >
+                     <h5 className='text-black/40 dark:text-white/50'>
+                        {comment.user && comment.user.name}
+                     </h5>
+                     <p className='ml-3 border-l-4 rounded p-4 pl-10'>
+                        {comment.content}
+                     </p>
+                  </div>
+               ))
+            ) : (
+               <p className="text-sm ml-5 mt-5">Be the first to comment</p>
+            )}
          </div>
       </div>
    );
