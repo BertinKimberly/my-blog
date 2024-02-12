@@ -56,7 +56,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          }
       };
       fetchComments();
-   }, []);
+   }, [post.id]);
    const isAuthenticated = async () => {
       try {
          const session = await getServerSession(authOptions);
@@ -231,7 +231,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                   </div>
                ))
             ) : (
-               <p className="text-sm ml-5 mt-5">Be the first to comment</p>
+               <p className='text-sm ml-5 mt-5'>Be the first to comment</p>
             )}
          </div>
       </div>
