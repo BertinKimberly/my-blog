@@ -46,7 +46,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const response = await fetch(`/api/comments?postId=${post.id}`);
+            const response = await fetch(`/api/comments/${post.id}`);
             const data = await response.json();
             if (Array.isArray(data)) {
                setComments(data);

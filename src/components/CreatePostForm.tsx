@@ -2,7 +2,7 @@
 import { CiLink } from "react-icons/ci";
 import { TCategory } from "@/app/types";
 import Link from "next/link";
-import react,{ useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CldUploadButton, CldUploadWidgetResults } from "next-cloudinary";
 import Image from "next/image";

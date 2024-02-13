@@ -17,7 +17,7 @@ const getPostById = async (id: string) => {
          return res.json();
       }
    } catch (error) {
-      toast.error("Error fetching post");
+      console.error("Error fetching post");
    }
 };
 
