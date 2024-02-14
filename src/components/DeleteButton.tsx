@@ -33,8 +33,8 @@ export default function DeleteButton({ id }: { id: string }) {
                await deleteImage(publicId);
 
                toast.success("Post deleted successfully");
-               router.refresh();
                redirect("/dashboard");
+               router.refresh();
             }
          } catch (error) {
             toast.error("Something went wrong");
