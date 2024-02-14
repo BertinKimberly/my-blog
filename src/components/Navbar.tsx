@@ -41,124 +41,126 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto border-b dark:bg-nav'>
-         <div>
-            <Link
-               href={"/"}
-               onClick={() => setToggleMenu(true)}
-               className='flex gap-1 items-center'
+      <div className='dark:bg-nav w-full border-b'>
+         <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto  '>
+            <div>
+               <Link
+                  href={"/"}
+                  onClick={() => setToggleMenu(true)}
+                  className='flex gap-1 items-center justify-start'
+               >
+                  <Image
+                     src={logo}
+                     alt='Glog'
+                     className='w-[100px] h-[100px] -ml-6 '
+                  />
+                  <h1 className='text-dark dark:text-white text-2xl font-bold -ml-8'>
+                     Glog
+                  </h1>
+               </Link>
+            </div>
+            <div
+               className={` flex items-center gap-4 capitalize bg-white p-5 md:p-0 dark:bg-nav md:bg-transparent ${
+                  toggleMenu
+                     ? "hidden md:flex"
+                     : "flex-col absolute top-[100px] right-4 p-2 z-50  md:flex-row md:static "
+               }`}
             >
-               <Image
-                  src={logo}
-                  alt='Glog'
-                  className='w-[100px] h-[100px] '
-               />
-               <h1 className='text-dark dark:text-white text-2xl font-bold -ml-8'>
-                  Glog
-               </h1>
-            </Link>
-         </div>
-         <div
-            className={` flex items-center gap-4 capitalize bg-white p-5 md:p-0 dark:bg-nav md:bg-transparent ${
-               toggleMenu
-                  ? "hidden md:flex"
-                  : "flex-col absolute top-[100px] right-4 p-2 z-50  md:flex-row md:static "
-            }`}
-         >
-            <Link
-               href={"/posts"}
-               onClick={handleMenu}
-            >
-               POSTS
-            </Link>
-            <Link
-               href={"/about"}
-               onClick={handleMenu}
-            >
-               ABOUT
-            </Link>
-            {status === "authenticated" ? (
-               <>
-                  <div
-                     ref={popupRef}
-                     className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-4 text-left min-w-[180px] bg-white dark:bg-nav ${
-                        isPopupVisible ? "flex" : "hidden"
-                     }`}
-                  >
-                     <div className='font-bold'>{session?.user?.name}</div>
-                     <div>{session?.user?.email}</div>
-                     <Link
-                        onClick={() => setIsPopupVisible(false)}
-                        className='hover:underline'
-                        href={"/dashboard"}
+               <Link
+                  href={"/posts"}
+                  onClick={handleMenu}
+               >
+                  POSTS
+               </Link>
+               <Link
+                  href={"/about"}
+                  onClick={handleMenu}
+               >
+                  ABOUT
+               </Link>
+               {status === "authenticated" ? (
+                  <>
+                     <div
+                        ref={popupRef}
+                        className={`absolute z-30 right-0 top-[6.5rem]  p-6 shadow-lg border border-t-0 rounded-md flex-col gap-4 text-left min-w-[180px] bg-white dark:bg-nav ${
+                           isPopupVisible ? "flex" : "hidden"
+                        }`}
                      >
-                        Dashboard
-                     </Link>
-                     <Link
-                        onClick={() => setIsPopupVisible(false)}
-                        className='hover:underline'
-                        href={"/create-post"}
-                     >
-                        Create Post
-                     </Link>
-                     <button
-                        onClick={() =>
-                           setMode((prevMode: string) =>
-                              prevMode === "light" ? "dark" : "light"
-                           )
-                        }
-                        className={cx(
-                           "w-6 h-6 ease  flex items-center justify-center rounded-full ",
-                           mode === "light"
-                              ? "bg-dark text-light"
-                              : "bg-light text-dark"
-                        )}
-                        aria-label='theme-switcher'
-                     >
-                        {mode === "light" ? <FaMoon /> : <FaSun />}
-                     </button>
-                     <button
-                        onClick={() => signOut()}
-                        className=' text-left border  p-1 rounded transition-all w-max'
-                     >
-                        Sign Out
-                     </button>
-                  </div>
+                        <div className='font-bold'>{session?.user?.name}</div>
+                        <div>{session?.user?.email}</div>
+                        <Link
+                           onClick={() => setIsPopupVisible(false)}
+                           className='hover:underline'
+                           href={"/dashboard"}
+                        >
+                           Dashboard
+                        </Link>
+                        <Link
+                           onClick={() => setIsPopupVisible(false)}
+                           className='hover:underline'
+                           href={"/create-post"}
+                        >
+                           Create Post
+                        </Link>
+                        <button
+                           onClick={() =>
+                              setMode((prevMode: string) =>
+                                 prevMode === "light" ? "dark" : "light"
+                              )
+                           }
+                           className={cx(
+                              "w-6 h-6 ease  flex items-center justify-center rounded-full ",
+                              mode === "light"
+                                 ? "bg-dark text-light"
+                                 : "bg-light text-dark"
+                           )}
+                           aria-label='theme-switcher'
+                        >
+                           {mode === "light" ? <FaMoon /> : <FaSun />}
+                        </button>
+                        <button
+                           onClick={() => signOut()}
+                           className=' text-left border  p-1 rounded transition-all w-max'
+                        >
+                           Sign Out
+                        </button>
+                     </div>
 
-                  <div className='flex gap-2 items-center'>
+                     <div className='flex gap-2 items-center'>
+                        <Link
+                           className='hidden md:flex gap-2 items-center mr-6'
+                           href={"/create-post"}
+                        >
+                           <span>CREATE NEW</span>
+                        </Link>
+                        <Image
+                           src={session?.user?.image || ""}
+                           width={36}
+                           height={36}
+                           alt='Profile Image'
+                           className='rounded-full cursor-pointer'
+                           onClick={() => setIsPopupVisible((prev) => !prev)}
+                        />
+                     </div>
+                  </>
+               ) : (
+                  <div className='flex items-center'>
                      <Link
-                        className='hidden md:flex gap-2 items-center mr-6'
-                        href={"/create-post"}
+                        className='btn'
+                        href={"/sign-in"}
+                        onClick={handleMenu}
                      >
-                        <span>CREATE NEW</span>
+                        SIGN IN
                      </Link>
-                     <Image
-                        src={session?.user?.image || ""}
-                        width={36}
-                        height={36}
-                        alt='Profile Image'
-                        className='rounded-full cursor-pointer'
-                        onClick={() => setIsPopupVisible((prev) => !prev)}
-                     />
                   </div>
-               </>
-            ) : (
-               <div className='flex items-center'>
-                  <Link
-                     className='btn'
-                     href={"/sign-in"}
-                     onClick={handleMenu}
-                  >
-                     SIGN IN
-                  </Link>
-               </div>
-            )}
-         </div>
-         <div
-            className='md:hidden'
-            onClick={handleMenu}
-         >
-            {toggleMenu ? <FaBars /> : <FaTimes />}
+               )}
+            </div>
+            <div
+               className='md:hidden'
+               onClick={handleMenu}
+            >
+               {toggleMenu ? <FaBars /> : <FaTimes />}
+            </div>
          </div>
       </div>
    );
