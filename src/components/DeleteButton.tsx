@@ -1,7 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function DeleteButton({ id }: { id: string }) {
    const router = useRouter();
@@ -34,6 +34,7 @@ export default function DeleteButton({ id }: { id: string }) {
 
                toast.success("Post deleted successfully");
                router.refresh();
+               redirect("/dashboard");
             }
          } catch (error) {
             toast.error("Something went wrong");

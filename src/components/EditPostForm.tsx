@@ -28,7 +28,9 @@ export default function EditPostForm({ post }: { post: TPost }) {
       const fetchAllCategories = async () => {
          const res = await fetch("/api/categories");
          const catNames = await res.json();
-         setCategories(catNames);
+         if (Array.isArray(catNames)) {
+            setCategories(catNames);
+         }
       };
 
       fetchAllCategories();
