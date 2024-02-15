@@ -7,8 +7,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { TComment } from "@/app/types";
 import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../lib/authOptions";
+import { useSession } from "next-auth/react";
 
 interface PostDetailsProps {
    post: {
@@ -28,6 +27,7 @@ interface PostDetailsProps {
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
+   const { data: session } = useSession();
    const dateObject = post.createdAt ? new Date(post.createdAt) : null;
    const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -46,7 +46,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const response = await fetch(`/api/comments/${post.id}`);
+            const response = await fetch(`/api/comments/postId?${post.id}`);
             const data = await response.json();
             if (Array.isArray(data)) {
                setComments(data);
@@ -57,15 +57,6 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       };
       fetchComments();
    }, [post.id]);
-   const isAuthenticated = async () => {
-      try {
-         const session = await getServerSession(authOptions);
-         return !!session;
-      } catch (error) {
-         console.error("Error checking authentication:", error);
-         return false;
-      }
-   };
 
    const handleCommentSubmit = async (e: FormEvent) => {
       e.preventDefault();
@@ -75,12 +66,11 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          return;
       }
 
-      const isLoggedIn = await isAuthenticated();
-
-      if (!isLoggedIn) {
+      if (!session) {
          toast.error("You need to be logged in to comment");
          return;
       }
+
       try {
          const response = await fetch("/api/comments", {
             method: "POST",
