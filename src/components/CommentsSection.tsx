@@ -17,15 +17,18 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const data = await fetch("/api/comments", {
-               method: "GET",
-               headers: {
-                  "Content-Type": "application/json",
-               },
-               body: JSON.stringify({
-                  postId,
-               }),
-            });
+            const data = await fetch(
+               `${process.env.NEXTAUTH_URL}/api/comments`,
+               {
+                  method: "GET",
+                  headers: {
+                     "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                     postId,
+                  }),
+               }
+            );
 
             if (Array.isArray(data)) {
                const transformedData: TComment[] = data.map((comment) => ({
@@ -60,16 +63,19 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
       }
 
       try {
-         const response = await fetch("/api/comments", {
-            method: "POST",
-            headers: {
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               postId,
-               content: commentText,
-            }),
-         });
+         const response = await fetch(
+            `${process.env.NEXTAUTH_URL}/api/comments`,
+            {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify({
+                  postId,
+                  content: commentText,
+               }),
+            }
+         );
 
          const newComment = await response.json();
          setComments([...comments, newComment]);
