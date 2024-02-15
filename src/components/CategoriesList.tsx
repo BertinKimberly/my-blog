@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TCategory } from "@/app/types";
+import { Suspense } from "react";
 
 const getCategories = async (): Promise<TCategory[] | null> => {
    try {
@@ -22,17 +23,19 @@ export default async function CategoriesList() {
       return null; // or return some default content or handle the error
    }
    return (
-      <div className='flex gap-2 text-sm flex-wrap'>
-         {categories &&
-            categories.map((category) => (
-               <Link
-                  key={category.id}
-                  className='px-4 py-1 rounded-md bg-subMain text-white cursor-pointer'
-                  href={`/categories/${category.catName}`}
-               >
-                  {category.catName}
-               </Link>
-            ))}
-      </div>
+      <Suspense fallback={<p className='text-center'>Loading...</p>}>
+         <div className='flex gap-2 text-sm flex-wrap mt-8'>
+            {categories &&
+               categories.map((category) => (
+                  <Link
+                     key={category.id}
+                     className='px-4 py-1 rounded-md bg-subMain text-white cursor-pointer'
+                     href={`/categories/${category.catName}`}
+                  >
+                     {category.catName}
+                  </Link>
+               ))}
+         </div>
+      </Suspense>
    );
 }
