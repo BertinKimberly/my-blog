@@ -42,22 +42,21 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req:Request) {
-   const {postId}=await req.json();
-   
-   if (!postId ) {
-    return NextResponse.json(
-      { error: "Post ID is required." },
-      { status: 500 }
-    );
-  }
+  
   try {
+    const {postId}=await req.json();
+   
+    if (!postId ) {
+     return NextResponse.json(
+       { error: "Post ID is required." },
+       { status: 500 }
+     );
+   }
      const response=await prisma.comment.findMany({
        where: {
           postId,
        },
-       include: {
-          user: true,
-       },
+       cacheStrategy: { ttl: 60,swr:10 },
     });
 return NextResponse.json(response)
 }catch(error){
