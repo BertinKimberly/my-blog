@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import { CiLink } from "react-icons/ci";
-import { useSession } from "next-auth/react";
 import CommentsSection from "./CommentsSection";
 
 interface PostDetailsProps {
@@ -24,7 +23,7 @@ interface PostDetailsProps {
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
-   const { data: session } = useSession();
+
    const dateObject = post.createdAt ? new Date(post.createdAt) : null;
    const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -127,7 +126,6 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                <DeleteButton id={post.id} />
             </div>
          )}
-         //comments section
          <CommentsSection postId={post.id} />
       </div>
    );
