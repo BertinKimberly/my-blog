@@ -23,8 +23,10 @@ export type TComment={
    postId: string;
    content: string;
    user: {
-      name: string | null; 
-   };
+      image: string | null;
+      id: string;
+      name: string | null;
+   } | null;
    createdAt: Date;
    updatedAt: Date;
 }

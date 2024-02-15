@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { TComment } from "@/app/types";
 import prisma from "../../lib/prismadb";
 
-
 interface CommentsSectionProps {
    postId: string;
 }
@@ -16,33 +15,33 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    const [comments, setComments] = useState<TComment[]>([]);
 
    useEffect(() => {
-    const fetchComments = async () => {
-        try {
-           const data = await prisma.comment.findMany({
-              where: {
-                 postId,
-              },
-              include: {
-                 user: true,
-              },
-           });
-     
-           if (Array.isArray(data)) {
-              const transformedData: TComment[] = data.map(comment => ({
-                 id: comment.id,
-                 postId: comment.postId,
-                 content: comment.content,
-                 user: comment.user,
-                 createdAt: comment.createdAt,
-                 updatedAt: comment.updatedAt,
-              }));
-     
-              setComments(transformedData);
-           }
-        } catch (error) {
-           toast.error("Error fetching comments");
-        }
-     };
+      const fetchComments = async () => {
+         try {
+            const data = await prisma.comment.findMany({
+               where: {
+                  postId,
+               },
+               include: {
+                  user: true,
+               },
+            });
+
+            if (Array.isArray(data)) {
+               const transformedData: TComment[] = data.map((comment) => ({
+                  id: comment.id,
+                  postId: comment.postId,
+                  content: comment.content,
+                  user: comment.user,
+                  createdAt: comment.createdAt,
+                  updatedAt: comment.updatedAt,
+               }));
+
+               setComments(transformedData);
+            }
+         } catch (error) {
+            toast.error("Error fetching comments");
+         }
+      };
       fetchComments();
    }, [postId]);
 
