@@ -19,11 +19,12 @@ export type TPost = {
 };
 
 export type TComment={
-  id:string;
-  postId:string;
-  userEmail:string;
-  content:string;
-  user:{
-    name:string;
-  }
+  id: string;
+   postId: string;
+   content: string;
+   user: {
+      name: string | null; 
+   };
+   createdAt: Date;
+   updatedAt: Date;
 }

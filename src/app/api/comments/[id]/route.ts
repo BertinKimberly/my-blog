@@ -3,26 +3,7 @@ import { getServerSession } from "next-auth/next";
 import prisma from "../../../../../lib/prismadb";
 import { authOptions } from "../../../../../lib/authOptions";
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const postId = params.id;
-    const comments = await prisma.comment.findMany({
-      where: { postId },
-      include: { user: { select: { name: true } } },
-      orderBy: {
-        createdAt: "desc",
-      },
-      cacheStrategy: { ttl: 60,swr:10 },
-    });
-    return NextResponse.json(comments);
-  } catch (error) {
 
-    return NextResponse.json({ message: "Could not fetch comments" });
-  }
-}
 
 export async function DELETE(
   req: Request,

@@ -41,21 +41,3 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
-  try {
-    const comments = await prisma.comment.findMany({
-      include: { user: { select: { name: true } } },
-      orderBy: {
-        createdAt: "desc",
-      },
-      cacheStrategy: { ttl: 60,swr:10 },
-    });
-
-    return NextResponse.json(comments);
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Some error occurred while fetching comments" },
-      { status: 500 }
-    );
-  }
-}
