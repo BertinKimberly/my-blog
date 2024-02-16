@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import prisma from "../../../../lib/prismadb";
 import { authOptions } from "../../../../lib/authOptions";
-import { NextApiRequest, NextApiResponse } from "next";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -42,23 +41,30 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+
+export async function GET(req: Request) {
   try {
-    const { postId } = req.query;
+    const { postId } = await req.json();
 
     if (!postId) {
-      return res.status(400).json({ error: 'Post ID is required.' });
+      return NextResponse.json(
+        { error: "Post ID is required." },
+        { status: 400 }
+      );
     }
 
     const comments = await prisma.comment.findMany({
       where: {
-        postId: postId.toString(), 
+        postId:postId,
       },
       cacheStrategy: { ttl: 60, swr: 10 },
     });
 
-    return res.status(200).json(comments);
+    return NextResponse.json(comments);
   } catch (error) {
-    return res.status(500).json({ message: 'Something went wrong!'});
+    return NextResponse.json(
+      { message: "Something went wrong!", error },
+      { status: 500 }
+    );
   }
 }
