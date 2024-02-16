@@ -49,7 +49,7 @@ export async function GET(req:Request) {
     if (!postId ) {
      return NextResponse.json(
        { error: "Post ID is required." },
-       { status: 500 }
+       { status: 400 }
      );
    }
      const response=await prisma.comment.findMany({
@@ -61,7 +61,7 @@ export async function GET(req:Request) {
 return NextResponse.json(response)
 }catch(error){
   return NextResponse.json(
-    { message: "Something went wrong!" },
+    { message: "Something went wrong!",error },
     { status: 500 }
   );
   }
