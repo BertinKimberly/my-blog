@@ -41,28 +41,31 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req:Request) {
-  
+
+export async function GET(req: Request) {
   try {
-    const {postId}=await req.json();
-   
-    if (!postId ) {
-     return NextResponse.json(
-       { error: "Post ID is required." },
-       { status: 400 }
-     );
-   }
-     const response=await prisma.comment.findMany({
-       where: {
-          postId,
-       },
-       cacheStrategy: { ttl: 60,swr:10 },
+    const { postId } = await req.json();
+
+    if (!postId) {
+      return NextResponse.json(
+        { error: "Post ID is required." },
+        { status: 400 }
+      );
+    }
+
+    const comments = await prisma.comment.findMany({
+      where: {
+        postId,
+      },
+      cacheStrategy: { ttl: 60, swr: 10 },
     });
-return NextResponse.json(response)
-}catch(error){
-  return NextResponse.json(
-    { message: "Something went wrong!",error },
-    { status: 500 }
-  );
+
+    return NextResponse.json(comments);
+  } catch (error) {
+    console.error("Halleluya",error );
+    return NextResponse.json(
+      { message: "Something went wrong!", error },
+      { status: 500 }
+    );
   }
 }
