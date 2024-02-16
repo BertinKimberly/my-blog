@@ -32,7 +32,7 @@ const PopularPosts: React.FC<PopularPostsProps> = ({ posts }) => {
                   />
                ))
             ) : (
-               <div className='py-6'>No posts to display</div>
+               <div className='py-6 text-center'>No posts to display</div>
             )}
          </div>
       </div>
