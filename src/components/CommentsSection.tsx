@@ -17,7 +17,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const data = await fetch("/api/comments", {
+            const data = await fetch(`/api/comments?postId=${postId}`, {
                method: "GET",
                headers: {
                   "Content-Type": "application/json",
