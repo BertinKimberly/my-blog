@@ -17,7 +17,15 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const data = await fetch(`/api/comments?postId=${postId}`);
+            const data = await fetch("/api/comments", {
+               method: "GET",
+               headers: {
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify({
+                  postId,
+               }),
+            });
             if (Array.isArray(data)) {
                const transformedData: TComment[] = data.map((comment) => ({
                   id: comment.id,
