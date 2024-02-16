@@ -3,8 +3,10 @@ import PopularPosts from "@/components/PopularPosts";
 import Image from "next/image";
 import Bible from "../../public/images/bible.png";
 import FeaturedPosts from "@/components/FeaturedPosts";
+import { Suspense } from "react";
+import Loader from "@/components/Loader";
 
-export const runtime = 'edge'
+export const runtime = "edge";
 
 const getPosts = async (): Promise<TPost[] | null> => {
    try {
@@ -56,10 +58,12 @@ export default async function Page() {
                </div>
             </div>
          </div>
-
-         <PopularPosts posts={posts} />
-
-         <FeaturedPosts posts={posts} />
+         <Suspense fallback={<Loader />}>
+            <PopularPosts posts={posts} />
+         </Suspense>
+         <Suspense fallback={<Loader />}>
+            <FeaturedPosts posts={posts} />
+         </Suspense>
       </>
    );
 }

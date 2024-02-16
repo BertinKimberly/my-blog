@@ -55,14 +55,13 @@ export async function GET(req: Request) {
 
     const comments = await prisma.comment.findMany({
       where: {
-        postId,
+        postId:postId 
       },
       cacheStrategy: { ttl: 60, swr: 10 },
     });
 
     return NextResponse.json(comments);
   } catch (error) {
-    console.error("Halleluya",error );
     return NextResponse.json(
       { message: "Something went wrong!", error },
       { status: 500 }
