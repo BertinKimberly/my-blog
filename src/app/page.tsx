@@ -33,7 +33,7 @@ export default async function Page() {
             Welcome to This blog . Enjoy accordingly
          </h1>
          <div className='my-20 py-10 md:px-4  bg-dry '>
-            <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center'>
+            <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center '>
                <div className='flex lg:gap-10 gap-6 flex-col'>
                   <h1 className='xl:text-3xl text-xl capitalize font-sans font-medium   xl:leading-loose'>
                      Read As Many Blogs As You Want . No Limitations.
@@ -49,7 +49,7 @@ export default async function Page() {
                      your path. Blessings await!
                   </p>
                </div>
-               <div className='flex items-center justify-center p-2 '>
+               <div className='hidden lg:flex items-center justify-center p-2 '>
                   <Image
                      src={Bible}
                      alt={"Bible"}
