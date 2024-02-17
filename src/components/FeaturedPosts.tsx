@@ -10,7 +10,7 @@ interface FeaturedPostsProps {
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
    return (
-      <div className=' p-2 flex flex-col gap-4'>
+      <div className=' p-2 flex flex-col gap-4 w-full'>
          <Header
             icon={<FaEye />}
             title='Also Check On these posts'

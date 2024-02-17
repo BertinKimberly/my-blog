@@ -10,7 +10,7 @@ interface PopularPostsProps {
 
 const PopularPosts: React.FC<PopularPostsProps> = ({ posts }) => {
    return (
-      <div className=' p-2 flex flex-col gap-4'>
+      <div className=' p-2 flex flex-col gap-4 w-full'>
          <Header
             icon={<FaUsers />}
             title='Popular Posts'
