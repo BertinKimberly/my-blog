@@ -37,7 +37,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          }
       };
       fetchComments();
-   }, [postId]);
+   }, [postId, comments]);
 
    const handleCommentSubmit = async (e: FormEvent) => {
       e.preventDefault();
@@ -67,7 +67,6 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          const newComment = await response.json();
          setComments([...comments, newComment]);
          setCommentText("");
-         router.refresh();
       } catch (error) {
          toast.error("Error submitting comment");
       }
