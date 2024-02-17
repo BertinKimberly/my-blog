@@ -3,7 +3,7 @@ import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { TComment } from "@/app/types";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface CommentsSectionProps {
    postId: string;
@@ -67,12 +67,11 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          const newComment = await response.json();
          setComments([...comments, newComment]);
          setCommentText("");
-         router.reload();
+         router.refresh();
       } catch (error) {
          toast.error("Error submitting comment");
       }
    };
-
    return (
       <div className='mt-5 border-t pt-10'>
          <h1>Comments</h1>
