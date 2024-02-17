@@ -37,7 +37,19 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          }
       };
       fetchComments();
-   }, [postId, comments]);
+
+      const handleCommentsUpdate = () => {
+         fetchComments();
+         router.refresh();
+      };
+
+      const commentsUpdateEvent = new Event("commentsUpdate");
+      document.addEventListener("commentsUpdate", handleCommentsUpdate);
+
+      return () => {
+         document.removeEventListener("commentsUpdate", handleCommentsUpdate);
+      };
+   }, [postId, router, comments]);
 
    const handleCommentSubmit = async (e: FormEvent) => {
       e.preventDefault();
@@ -66,6 +78,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
 
          const newComment = await response.json();
          setComments([...comments, newComment]);
+         document.dispatchEvent(new Event("commentsUpdate"));
          setCommentText("");
       } catch (error) {
          toast.error("Error submitting comment");
