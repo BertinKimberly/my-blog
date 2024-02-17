@@ -3,7 +3,7 @@ import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { TComment } from "@/app/types";
-import prisma from "../../lib/prismadb";
+
 
 interface CommentsSectionProps {
    postId: string;

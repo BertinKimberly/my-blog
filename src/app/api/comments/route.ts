@@ -55,7 +55,10 @@ export async function GET(req: NextRequest) {
     }
 
     const comments = await prisma.comment.findMany(
-      { where: { postId:postId }, cacheStrategy: { ttl: 60, swr: 10 } }
+      { where: { postId:postId }, orderBy: {
+        createdAt: "desc",
+      },include:{user:true},
+       cacheStrategy: { ttl: 60, swr: 10 } }
     );
 
     return NextResponse.json(comments);
