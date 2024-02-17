@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { TComment } from "@/app/types";
 
-
 interface CommentsSectionProps {
    postId: string;
 }
@@ -17,13 +16,14 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    useEffect(() => {
       const fetchComments = async () => {
          try {
-            const data = await fetch(`/api/comments?postId=${postId}`);
+            const res = await fetch(`/api/comments?postId=${postId}`);
+            const data = await res.json();
             if (Array.isArray(data)) {
                const transformedData: TComment[] = data.map((comment) => ({
                   id: comment.id,
                   postId: comment.postId,
                   content: comment.content,
-                  user: comment.user,
+                  user: comment.user.name,
                   createdAt: comment.createdAt,
                   updatedAt: comment.updatedAt,
                }));
