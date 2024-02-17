@@ -3,6 +3,9 @@ import { IoMdSend } from "react-icons/io";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { TComment } from "@/app/types";
+import { useRouter } from "next/navigation";
+
+
 
 interface CommentsSectionProps {
    postId: string;
@@ -13,6 +16,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    const [commentText, setCommentText] = useState<string>("");
    const [comments, setComments] = useState<TComment[]>([]);
 
+   const router = useRouter();
    useEffect(() => {
       const fetchComments = async () => {
          try {
@@ -23,7 +27,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
                   id: comment.id,
                   postId: comment.postId,
                   content: comment.content,
-                  user: comment.user.name,
+                  user: comment.user,
                   createdAt: comment.createdAt,
                   updatedAt: comment.updatedAt,
                }));
@@ -65,6 +69,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          const newComment = await response.json();
          setComments([...comments, newComment]);
          setCommentText("");
+         router.refresh();
       } catch (error) {
          toast.error("Error submitting comment");
       }
