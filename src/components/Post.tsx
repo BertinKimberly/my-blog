@@ -24,7 +24,7 @@ export default async function Post({
 }: PostProps) {
    const postAuthor = author || "Anonymous";
    return (
-      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-subMain border border-nav  hover:scale-95 transition duration-300 ease-in'>
+      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-nav border border-nav  hover:scale-95 transition duration-300 ease-in'>
          <h1 className='text-lg'>{title} </h1>
          <div className='border border-nav p-1 relative  transition rounded overflow-hidden  h-[280px] '>
             <Link
