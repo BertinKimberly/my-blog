@@ -42,9 +42,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       router.push(`/categories/${catName}`);
    };
 
-
    //related posts
-
 
    return (
       <div className='my-4  py-8'>
@@ -116,7 +114,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                   >
                      <CiLink />
                      <Link
-                        className='link'
+                        className='text-blue-600 dark:text-white/50'
                         href={link}
                      >
                         {link}
