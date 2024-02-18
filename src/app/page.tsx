@@ -29,9 +29,7 @@ export default async function Page() {
    const posts = await getPosts();
    return (
       <>
-         <h1 className='text-3xl mt-10'>
-            Welcome to This blog . Enjoy accordingly
-         </h1>
+         <h1 className='text-3xl mt-10'>Welcome to Glog . Enjoy accordingly</h1>
          <div className='my-20 py-10 md:px-4  bg-dry '>
             <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center '>
                <div className='flex lg:gap-10 gap-6 flex-col'>

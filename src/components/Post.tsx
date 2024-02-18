@@ -58,24 +58,7 @@ export default async function Post({
                </button>
             </div>
          </div>
-         {links && (
-            <div className='my-4 flex flex-col gap-3'>
-               {links.slice(0, 2).map((link, i) => (
-                  <div
-                     key={i}
-                     className='flex gap-2 items-center'
-                  >
-                     <CiLink />
-                     <Link
-                        className='link'
-                        href={link}
-                     >
-                        {link}
-                     </Link>
-                  </div>
-               ))}
-            </div>
-         )}
+
          <p className='text-dark dark:text-white'>By {postAuthor}</p>
       </div>
    );
