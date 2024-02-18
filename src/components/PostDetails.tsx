@@ -4,6 +4,8 @@ import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import { CiLink } from "react-icons/ci";
 import CommentsSection from "./CommentsSection";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface PostDetailsProps {
    post: {
@@ -33,7 +35,12 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
       ? dateObject.toLocaleDateString("en-US", options)
       : "";
 
-   //comments
+   //navigate to cat
+   const router = useRouter();
+
+   const navigateToCat = async (catName: string | undefined) => {
+      router.push(`/categories/${catName}`);
+   };
 
    return (
       <div className='my-4  py-8'>
@@ -68,12 +75,12 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
          </div>
 
          {post.catName && (
-            <Link
+            <p
                className=' text-blue-600 dark:text-white/50 px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
-               href={`${process.env.NEXTAUTH_URL}/categories/${post.catName}`}
+               onClick={() => navigateToCat(post.catName)}
             >
                #{post.catName}
-            </Link>
+            </p>
          )}
          <div
             className='pt-20 prose sm:prose-base md:prose-lg max-w-max
