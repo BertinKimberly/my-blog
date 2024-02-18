@@ -85,7 +85,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
       }
    };
    return (
-      <div className='mt-5 border-t pt-10'>
+      <div className='mt-5 border-t pt-10 border-nav'>
          <h1>Comments</h1>
 
          {/* Comment form */}

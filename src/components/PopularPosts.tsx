@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post";
 import { TPost } from "@/app/types";
 import Header from "./Header";
-import { FaUsers } from "react-icons/fa";
+import { GiStarGate } from "react-icons/gi";
 
 interface PopularPostsProps {
    posts: TPost[] | null;
@@ -12,7 +12,7 @@ const PopularPosts: React.FC<PopularPostsProps> = ({ posts }) => {
    return (
       <div className=' p-2 flex flex-col gap-4 w-full'>
          <Header
-            icon={<FaUsers />}
+            icon={<GiStarGate /> }
             title='Popular Posts'
          />
          <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10'>

@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post";
 import { TPost } from "@/app/types";
 import Header from "./Header";
-import { FaEye } from "react-icons/fa";
+import { MdOutlineFeaturedPlayList } from "react-icons/md";
 
 interface FeaturedPostsProps {
    posts: TPost[] | null;
@@ -12,7 +12,7 @@ const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
    return (
       <div className=' p-2 flex flex-col gap-4 w-full'>
          <Header
-            icon={<FaEye />}
+            icon={<MdOutlineFeaturedPlayList />}
             title='Also Check On these posts'
          />
          <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10 '>

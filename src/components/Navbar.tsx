@@ -41,7 +41,7 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='dark:bg-nav w-full border-b'>
+      <div className='dark:bg-nav w-full border-b border-nav'>
          <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto  '>
             <div>
                <Link

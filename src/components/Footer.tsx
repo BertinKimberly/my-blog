@@ -62,7 +62,7 @@ const Footer = () => {
       },
    ];
    return (
-      <div className='bg-dry py-4 border-t-2 border-gray-400 pb-[5rem]'>
+      <div className='bg-dry py-4 border-t-[0.5px] border-nav pb-[5rem]'>
          <div className='container mx-auto px-2'>
             <div className='grid grid-cols-2 md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 justify-between'>
                {Links.map((link, index) => (
@@ -120,7 +120,7 @@ const Footer = () => {
                   <FaInstagram />
                </Link>
             </p>
-            <hr className='w-3/4 ' />
+            <hr className='w-3/4 text-nav ' />
          </div>
 
          <p className='text-center text-border my-3'>

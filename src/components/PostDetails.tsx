@@ -17,13 +17,12 @@ interface PostDetailsProps {
       title: string;
       content: string;
       links?: null | string[];
-      category?: string;
+      catName?: string;
    };
    isEditable?: boolean;
 }
 
 const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
-
    const dateObject = post.createdAt ? new Date(post.createdAt) : null;
    const options: Intl.DateTimeFormatOptions = {
       month: "short",
@@ -67,28 +66,28 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                />
             )}
          </div>
-         {/* 
-         {post.category && (
+
+         {post.catName && (
             <Link
                className=' text-white px-4 py-0.5 text-sm font-bold rounded-md mt-4 block'
-               href={`categories/${post.category}`}
+               href={`categories/${post.catName}`}
             >
-               {post.category}
+               #{post.catName}
             </Link>
-         )} */}
+         )}
          <div
             className='pt-20 prose sm:prose-base md:prose-lg max-w-max
     prose-blockquote:bg-accent/20 
     prose-blockquote:p-2
     prose-blockquote:px-6
-    prose-blockquote:border-accent
+    prose-blockquote:border-nav
     prose-blockquote:not-italic
     prose-blockquote:rounded-r-lg
 
     prose-li:marker:text-accent
 
     dark:prose-invert
-    dark:prose-blockquote:border-accentDark
+    dark:prose-blockquote:border-nav
     dark:prose-blockquote:bg-accentDark/20
     dark:prose-li:marker:text-accentDark
 
