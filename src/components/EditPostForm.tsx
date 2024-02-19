@@ -152,7 +152,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
             />
 
             {links &&
-               links.map((link, i) => (
+               links?.map((link, i) => (
                   <div
                      key={i}
                      className='flex items-center gap-4'
@@ -231,7 +231,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
                   Select A Category
                </option>
                {categories &&
-                  categories.map((category) => (
+                  categories?.map((category) => (
                      <option
                         key={category.id}
                         value={category.catName}

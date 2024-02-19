@@ -103,7 +103,6 @@ export default function CreatePostForm() {
          if (res.ok) {
             toast.success("Post created successfully");
             router.push("/dashboard");
-     
          } else {
             toast.error("Something went wrong.");
          }
@@ -132,7 +131,7 @@ export default function CreatePostForm() {
             />
 
             {links &&
-               links.map((link, i) => (
+               links?.map((link, i) => (
                   <div
                      key={i}
                      className='flex items-center gap-4'
@@ -212,7 +211,7 @@ export default function CreatePostForm() {
                   Select A Category
                </option>
                {categories &&
-                  categories.map((category) => (
+                  categories?.map((category) => (
                      <option
                         key={category.id}
                         value={category.catName}
