@@ -26,7 +26,7 @@ export default async function CategoriesList() {
       <Suspense fallback={<p className='text-center'>Loading...</p>}>
          <div className='flex gap-2 text-sm flex-wrap mt-8'>
             {categories &&
-               categories.map((category) => (
+               categories?.map((category) => (
                   <Link
                      key={category.id}
                      className='px-4 py-1 rounded-md bg-subMain text-white cursor-pointer'

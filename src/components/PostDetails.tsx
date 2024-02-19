@@ -116,6 +116,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                      <Link
                         className='text-blue-600 dark:text-white/50'
                         href={link}
+                        target="_blank"
                      >
                         {link}
                      </Link>
