@@ -3,10 +3,9 @@ import logo from "../../public/logo.png";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react";
-import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
-import { cx } from "@/utils";
-import { useThemeSwitch } from "@/hooks/useThemeSwitch";
+import { useState, useRef, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 
 export default function Navbar() {
    const { status, data: session } = useSession();
@@ -16,10 +15,6 @@ export default function Navbar() {
 
    //theme
 
-   const [mode, setMode] = useThemeSwitch() as [
-      string,
-      Dispatch<SetStateAction<string>>
-   ];
 
    const handleMenu = () => setToggleMenu((prev) => !prev);
    useEffect(() => {
@@ -102,22 +97,7 @@ export default function Navbar() {
                         >
                            Create Post
                         </Link>
-                        <button
-                           onClick={() =>
-                              setMode((prevMode: string) =>
-                                 prevMode === "light" ? "dark" : "light"
-                              )
-                           }
-                           className={cx(
-                              "w-6 h-6 ease  flex items-center justify-center rounded-full ",
-                              mode === "light"
-                                 ? "bg-dark text-light"
-                                 : "bg-light text-dark"
-                           )}
-                           aria-label='theme-switcher'
-                        >
-                           {mode === "light" ? <FaMoon /> : <FaSun />}
-                        </button>
+                        
                         <button
                            onClick={() => signOut()}
                            className=' text-left border  p-1 rounded transition-all w-max'

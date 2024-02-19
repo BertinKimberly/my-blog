@@ -1,6 +1,15 @@
-import React from "react";
+"use client";
+import React, { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+   FaFacebook,
+   FaInstagram,
+   FaLinkedin,
+   FaMoon,
+   FaSun,
+} from "react-icons/fa";
+import { useThemeSwitch } from "@/hooks/useThemeSwitch";
+import { cx } from "@/utils";
 
 const Footer = () => {
    const Links = [
@@ -61,6 +70,13 @@ const Footer = () => {
          ],
       },
    ];
+
+   //mode
+
+   const [mode, setMode] = useThemeSwitch() as [
+      string,
+      Dispatch<SetStateAction<string>>
+   ];
    return (
       <div className='bg-dry py-4 border-t-[0.5px] border-nav pb-[5rem]'>
          <div className='container mx-auto px-2'>
@@ -109,17 +125,37 @@ const Footer = () => {
             </div>
          </div>
          <div className='flex w-full items-center justify-center flex-col'>
-            <p className='flex text-center items-center justify-center p-3 gap-4'>
-               <Link href=''>
-                  <FaFacebook />
-               </Link>
-               <Link href=''>
-                  <FaLinkedin />
-               </Link>
-               <Link href=''>
-                  <FaInstagram />
-               </Link>
-            </p>
+               <p className='flex text-center items-center justify-center p-3 gap-4'>
+                  <Link href=''>
+                     <FaFacebook />
+                  </Link>
+                  <Link href=''>
+                     <FaLinkedin />
+                  </Link>
+                  <Link href=''>
+                     <FaInstagram />
+                  </Link>
+                  
+                  <button
+                     onClick={() =>
+                        setMode((prevMode: string) =>
+                           prevMode === "light" ? "dark" : "light"
+                        )
+                     }
+                     className={cx(
+                        "w-6 h-6 ease  flex items-center justify-center rounded-full ml-14",
+                        mode === "light"
+                           ? "bg-dark text-light"
+                           : "bg-light text-dark"
+                     )}
+                     aria-label='theme-switcher'
+                  >
+                     {mode === "light" ? <FaMoon /> : <FaSun />}
+                  </button>
+               </p>
+       
+               
+   
             <hr className='w-3/4 text-nav ' />
          </div>
 
