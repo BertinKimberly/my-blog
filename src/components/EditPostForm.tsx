@@ -235,6 +235,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
                      <option
                         key={category.id}
                         value={category.catName}
+                        className='text-dark py-2'
                      >
                         {category.catName}
                      </option>
