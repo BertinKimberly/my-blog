@@ -45,7 +45,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
    //related posts
 
    return (
-      <div className='my-4  py-8'>
+      <div className='my-4  py-8 container'>
          <div className='mb-4'>
             {post.author ? (
                <>
@@ -116,7 +116,7 @@ const PostDetails: React.FC<PostDetailsProps> = ({ post, isEditable }) => {
                      <Link
                         className='text-blue-600 dark:text-white/50'
                         href={link}
-                        target="_blank"
+                        target='_blank'
                      >
                         {link}
                      </Link>

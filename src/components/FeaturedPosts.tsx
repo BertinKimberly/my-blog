@@ -11,12 +11,13 @@ interface FeaturedPostsProps {
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
    return (
-      <div className=' p-2 flex flex-col gap-4 w-full'>
+      <div className=' p-2 flex flex-col gap-4 w-full relative'>
+         <div className='h-[200px] bg-[#A099CA3B] absolute -left-10 -right-20 -top-12 transform -rotate-6 z-0 '></div>
          <Header
             icon={<MdOutlineFeaturedPlayList />}
             title='Also Check On these posts'
          />
-         <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10 '>
+         <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2   mx-4 md:mx-12 sm:grid-cols-1 grid-cols-1 gap-10 pb-10 z-20'>
             <Suspense fallback={<Loader />}>
                {posts && posts.length > 0 ? (
                   posts.slice(0, 3).map((post: TPost) => (

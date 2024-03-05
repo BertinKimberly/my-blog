@@ -3,7 +3,6 @@ import PopularPosts from "@/components/PopularPosts";
 import Image from "next/image";
 import Bible from "../../public/images/bible.png";
 import FeaturedPosts from "@/components/FeaturedPosts";
-import BackgroundVideo from "@/components/BackgroundVideo";
 
 export const runtime = "edge";
 
@@ -28,38 +27,30 @@ export default async function Page() {
    const posts = await getPosts();
    return (
       <>
-         <div className='relative'>
-            <BackgroundVideo />
-            <div className='absolute top-0 left-0 '>
-               <h1 className='text-3xl mt-10'>
-                  Welcome to Glog . Enjoy accordingly
-               </h1>
-               <div className='my-20 py-10 md:px-4  bg-dry '>
-                  <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center '>
-                     <div className='flex lg:gap-10 gap-6 flex-col'>
-                        <h1 className='xl:text-3xl text-xl capitalize font-sans font-medium   xl:leading-loose'>
-                           Read As Many Blogs As You Want . No Limitations.
-                        </h1>
-                        <p className=' text-md xl:text-base leading-6 xl:leading-8'>
-                           Welcome to our Gospel Blog, where inspiration meets
-                           revelation! Dive into the uplifting messages of
-                           faith, hope, and love that resonate with the core of
-                           Gospel teachings. Explore a journey of spiritual
-                           growth and enlightenment with our diverse content.
-                           Join our community as we share the timeless wisdom
-                           that guides us through life&#39;s challenges. Let the
-                           power of gospel illuminate your path. Blessings
-                           await!
-                        </p>
-                     </div>
-                     <div className='hidden lg:flex items-center justify-center p-2 '>
-                        <Image
-                           src={Bible}
-                           alt={"Bible"}
-                           className='w-1/2 object-contain'
-                        />
-                     </div>
-                  </div>
+         <div className='my-20 py-10 px-4  md:mx-12 '>
+            <div className='lg:grid lg:grid-cols-2 lg:gap-10 items-center '>
+               <div className='flex lg:gap-10 gap-6 flex-col'>
+                  <h1 className='xl:text-3xl text-xl capitalize font-sans font-medium   xl:leading-loose'>
+                     Read As Many Blogs As You Want . No Limitations.
+                  </h1>
+
+                  <p className=' text-md xl:text-base leading-6 xl:leading-8'>
+                     Welcome to our Gospel Blog, where inspiration meets
+                     revelation! Dive into the uplifting messages of faith,
+                     hope, and love that resonate with the core of Gospel
+                     teachings. Explore a journey of spiritual growth and
+                     enlightenment with our diverse content. Join our community
+                     as we share the timeless wisdom that guides us through
+                     life&#39;s challenges. Let the power of gospel illuminate
+                     your path. Blessings await!
+                  </p>
+               </div>
+               <div className='hidden lg:flex items-center justify-center p-2 '>
+                  <Image
+                     src={Bible}
+                     alt={"Bible"}
+                     className='w-1/2 object-contain'
+                  />
                </div>
             </div>
          </div>

@@ -24,8 +24,8 @@ export default async function Post({
 }: PostProps) {
    const postAuthor = author || "Anonymous";
    return (
-      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-nav border border-nav  hover:scale-95 transition duration-300 ease-in'>
-         <h1 className='text-lg'>{title} </h1>
+      <div className='h-[500px]  flex flex-col gap-3 p-2 rounded dark:bg-nav   hover:scale-95 transition duration-300 ease-in shadow-md'>
+         <h1 className='text-lg text-[#8D9CEC]'>{title} </h1>
          <div className='border border-nav p-1 relative  transition rounded overflow-hidden  h-[280px] '>
             <Link
                href={`/posts/${id}`}
@@ -47,7 +47,7 @@ export default async function Post({
                   />
                )}
             </Link>
-            <div className='flex absolute justify-center gap-2 bottom-0 right-0 bg-white text-white  left-0 dark:bg-subMain bg-opacity-60 dark:text-white px-4 py-3 '>
+            <div className='flex absolute justify-center gap-2 bottom-0 right-0 bg-white text-white  left-0 dark:bg-[#A099CA3B] bg-opacity-60 dark:text-white px-4 py-3 '>
                <button>
                   <Link
                      href={`/posts/${id}`}
@@ -59,7 +59,7 @@ export default async function Post({
             </div>
          </div>
 
-         <p className='text-dark dark:text-white'>By {postAuthor}</p>
+         <p className='text-dark dark:text-[#A099CA3B]'>By {postAuthor}</p>
       </div>
    );
 }

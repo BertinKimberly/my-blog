@@ -131,7 +131,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
    };
 
    return (
-      <div>
+      <div className='container'>
          <h2>Edit Post</h2>
          <form
             onSubmit={handleSubmit}
@@ -242,7 +242,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
             </select>
 
             <button
-               className='bg-main transition-all hover:bg-transparent hover:text-main gap-4 text-white p-4 rounded-lg w-full border  my-3'
+               className='bg-[#5B56F421] transition-all hover:bg-transparent hover:text-[#5B56F421] gap-4 text-white p-4 rounded-lg w-full border  my-3'
                type='submit'
             >
                Update Post

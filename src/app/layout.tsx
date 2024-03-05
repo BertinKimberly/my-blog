@@ -23,7 +23,7 @@ export const metadata = {
    metadataBase: new URL(siteMetadata.siteUrl),
    title: {
       template: `%s | ${siteMetadata.title}`,
-      default: siteMetadata.title, 
+      default: siteMetadata.title,
    },
    description: siteMetadata.description,
    openGraph: {
@@ -65,7 +65,7 @@ export default function RootLayout({
             className={cx(
                inter.variable,
                manrope.variable,
-               "font-mr bg-white/5 dark:bg-dark dark:text-white"
+               "font-mr bg-white/5 dark:bg-dark overflow-x-hidden dark:text-white"
             )}
          >
             <Script
@@ -83,9 +83,7 @@ export default function RootLayout({
 
             <NextAuthProvider>
                <Layout>
-                  <main className='mx-auto container min-h-[80vh] '>
-                     {children}
-                  </main>
+                  <main className='mx-auto min-h-[80vh] '>{children}</main>
                   <Toaster position='bottom-right' />
                </Layout>
             </NextAuthProvider>

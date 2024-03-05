@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-
 export default function Navbar() {
    const { status, data: session } = useSession();
    const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -14,7 +13,6 @@ export default function Navbar() {
    const popupRef = useRef<HTMLDivElement | null>(null);
 
    //theme
-
 
    const handleMenu = () => setToggleMenu((prev) => !prev);
    useEffect(() => {
@@ -36,7 +34,8 @@ export default function Navbar() {
    }, [isPopupVisible]);
 
    return (
-      <div className='dark:bg-nav w-full border-b border-nav'>
+      <div className='dark:bg-nav w-full shadow'>
+         <div className='w-[700px] h-[420px] bg-[#5B56F421] dark:bg-opacity-0 absolute -top-80 -left-96 rounded-full'></div>
          <div className='flex justify-between pb-4 mb-4 relative container h-[100px] items-center mx-auto  '>
             <div>
                <Link
@@ -64,12 +63,14 @@ export default function Navbar() {
                <Link
                   href={"/posts"}
                   onClick={handleMenu}
+                  className='hover:text-[#5B56F421] transition'
                >
                   POSTS
                </Link>
                <Link
                   href={"/about"}
                   onClick={handleMenu}
+                  className='hover:text-[#5B56F421] transition'
                >
                   ABOUT
                </Link>
@@ -85,19 +86,19 @@ export default function Navbar() {
                         <div>{session?.user?.email}</div>
                         <Link
                            onClick={() => setIsPopupVisible(false)}
-                           className='hover:underline'
+                           className='hover:underline hover:text-[#5B56F421] transition'
                            href={"/dashboard"}
                         >
                            Dashboard
                         </Link>
                         <Link
                            onClick={() => setIsPopupVisible(false)}
-                           className='hover:underline'
+                           className='hover:underline hover:text-[#5B56F421] transition'
                            href={"/create-post"}
                         >
                            Create Post
                         </Link>
-                        
+
                         <button
                            onClick={() => signOut()}
                            className=' text-left border  p-1 rounded transition-all w-max'
@@ -108,7 +109,7 @@ export default function Navbar() {
 
                      <div className='flex gap-2 items-center'>
                         <Link
-                           className='hidden md:flex gap-2 items-center mr-6'
+                           className='hidden md:flex gap-2 items-center mr-6 hover:text-[#5B56F421] transition'
                            href={"/create-post"}
                         >
                            <span>CREATE NEW</span>
@@ -126,7 +127,7 @@ export default function Navbar() {
                ) : (
                   <div className='flex items-center'>
                      <Link
-                        className='btn'
+                        className='hover:text-[#5B56F421] transition'
                         href={"/sign-in"}
                         onClick={handleMenu}
                      >

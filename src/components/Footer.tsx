@@ -78,7 +78,7 @@ const Footer = () => {
       Dispatch<SetStateAction<string>>
    ];
    return (
-      <div className='bg-dry py-4 border-t-[0.5px] border-nav pb-[5rem]'>
+      <div className='bg-[#EAE9FE] dark:bg-[#5B56F421] py-4 shadow-t border-nav pb-[5rem]'>
          <div className='container mx-auto px-2'>
             <div className='grid grid-cols-2 md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 justify-between'>
                {Links.map((link, index) => (
@@ -125,37 +125,35 @@ const Footer = () => {
             </div>
          </div>
          <div className='flex w-full items-center justify-center flex-col'>
-               <p className='flex text-center items-center justify-center p-3 gap-4'>
-                  <Link href=''>
-                     <FaFacebook />
-                  </Link>
-                  <Link href=''>
-                     <FaLinkedin />
-                  </Link>
-                  <Link href=''>
-                     <FaInstagram />
-                  </Link>
-                  
-                  <button
-                     onClick={() =>
-                        setMode((prevMode: string) =>
-                           prevMode === "light" ? "dark" : "light"
-                        )
-                     }
-                     className={cx(
-                        "w-6 h-6 ease  flex items-center justify-center rounded-full ml-14",
-                        mode === "light"
-                           ? "bg-dark text-light"
-                           : "bg-light text-dark"
-                     )}
-                     aria-label='theme-switcher'
-                  >
-                     {mode === "light" ? <FaMoon /> : <FaSun />}
-                  </button>
-               </p>
-       
-               
-   
+            <p className='flex text-center items-center justify-center p-3 gap-4'>
+               <Link href=''>
+                  <FaFacebook />
+               </Link>
+               <Link href=''>
+                  <FaLinkedin />
+               </Link>
+               <Link href=''>
+                  <FaInstagram />
+               </Link>
+
+               <button
+                  onClick={() =>
+                     setMode((prevMode: string) =>
+                        prevMode === "light" ? "dark" : "light"
+                     )
+                  }
+                  className={cx(
+                     "w-6 h-6 ease  flex items-center justify-center rounded-full ml-14",
+                     mode === "light"
+                        ? "bg-dark text-light"
+                        : "bg-light text-dark"
+                  )}
+                  aria-label='theme-switcher'
+               >
+                  {mode === "light" ? <FaMoon /> : <FaSun />}
+               </button>
+            </p>
+
             <hr className='w-3/4 text-nav ' />
          </div>
 

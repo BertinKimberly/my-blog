@@ -28,7 +28,7 @@ const getPosts = async (): Promise<TPost[] | null> => {
 export default async function Page() {
    const posts = await getPosts();
    return (
-      <>
+      <div className='container'>
          <CategoriesList />
          <Suspense fallback={<Loader />}>
             <div className='grid sm:mt-12 mt-6 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 py-6 mb-20'>
@@ -52,6 +52,6 @@ export default async function Page() {
                )}
             </div>
          </Suspense>
-      </>
+      </div>
    );
 }
