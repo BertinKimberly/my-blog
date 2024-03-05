@@ -222,7 +222,7 @@ export default function CreatePostForm() {
             </select>
 
             <button
-               className='bg-[#5B56F421] transition-all hover:bg-transparent hover:text-[#5B56F421] flex-rows gap-4 text-white p-4 rounded-lg w-full border border-border my-3'
+               className='bg-[#5B56F421] transition-all hover:bg-transparent hover:text-[#5B56F421] flex-rows gap-4 dark:text-white text-dark p-4 rounded-lg w-full border border-border my-3'
                type='submit'
             >
                Create Post

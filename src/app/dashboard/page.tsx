@@ -38,7 +38,7 @@ export default async function Page() {
    }
 
    return (
-      <div>
+      <div className="container">
          <h1>My Posts</h1>
          <Suspense fallback={<Loader />}>
             <div className=' grid sm:mt-12 mt-8 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-10 pb-10'>
