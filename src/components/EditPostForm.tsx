@@ -21,6 +21,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
    const [selectedCategory, setSelectedCategory] = useState("");
    const [imageUrl, setImageUrl] = useState("");
    const [publicId, setPublicId] = useState("");
+   const [isSubmitting, setIsSubmitting] = useState(false);
 
    const router = useRouter();
 
@@ -105,6 +106,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
       }
 
       try {
+         setIsSubmitting(true);
          const res = await fetch(`/api/posts/${post.id}`, {
             method: "PUT",
             headers: {
@@ -127,6 +129,8 @@ export default function EditPostForm({ post }: { post: TPost }) {
          }
       } catch (error) {
          toast.error("Something went wrong");
+      } finally {
+         setIsSubmitting(false); // Set submitting to false after submitting a post
       }
    };
 
@@ -221,7 +225,7 @@ export default function EditPostForm({ post }: { post: TPost }) {
 
             <select
                onChange={(e) => setSelectedCategory(e.target.value)}
-               className='w-full mt-2 px-6 py-4 text-text   bg-[#5B56F421] border rounded text-dark dark:text-white'
+               className='w-full mt-2 px-6 py-4 text-text   bg-[#5B56F421] border rounded text-dark '
                value={selectedCategory}
             >
                <option
@@ -245,8 +249,9 @@ export default function EditPostForm({ post }: { post: TPost }) {
             <button
                className='bg-[#5B56F421] transition-all hover:bg-transparent hover:text-[#5B56F421] gap-4 dark:text-white text-dark  p-4 rounded-lg w-full border  my-3'
                type='submit'
+               disabled={isSubmitting}
             >
-               Update Post
+               {isSubmitting ? "Updating Post..." : "Update Post"}
             </button>
          </form>
       </div>

@@ -34,20 +34,20 @@ const About = () => {
                <div className='grid md:grid-cols-2 gap-6 mt-8'>
                   <div className='p-8 bg-dry rounded-lg'>
                      <span className='text-3xl block font-extrabold  dark:bg-main w-max p-3 rounded-md border bg-transparent'>
-                        0.5K
+                        10+
                      </span>
                      <h4 className='text-lg font-semibold my-2'>Users</h4>
                      <p className='mb-0 text-text leading-7 text-sm'>
-                        These movies will help you know more about gospel
+                        It is a pleasure to have you
                      </p>
                   </div>
                   <div className='p-8 bg-dry rounded-lg'>
                      <span className='text-3xl block font-extrabold dark:bg-main w-max p-3 rounded-md border bg-transparent'>
-                        1K +
+                        20 +
                      </span>
                      <h4 className='text-lg font-semibold my-2'>Articles</h4>
                      <p className='mb-0 text-text leading-7 text-sm'>
-                        It is a preasure to have you
+                        These articles will help you know more about gospel
                      </p>
                   </div>
                </div>

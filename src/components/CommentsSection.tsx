@@ -13,10 +13,12 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
    const { data: session } = useSession();
    const [commentText, setCommentText] = useState<string>("");
    const [comments, setComments] = useState<TComment[]>([]);
-
+   const [isLoading, setIsLoading] = useState<Boolean>(false);
+   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
    const router = useRouter();
    useEffect(() => {
       const fetchComments = async () => {
+         setIsLoading(true);
          try {
             const res = await fetch(`/api/comments?postId=${postId}`);
             const data = await res.json();
@@ -34,6 +36,8 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
             }
          } catch (error) {
             toast.error("Error fetching comments");
+         } finally {
+            setIsLoading(false);
          }
       };
       fetchComments();
@@ -65,6 +69,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
       }
 
       try {
+         setIsSubmitting(true);
          const response = await fetch("/api/comments", {
             method: "POST",
             headers: {
@@ -82,6 +87,8 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          setCommentText("");
       } catch (error) {
          toast.error("Error submitting comment");
+      } finally {
+         setIsSubmitting(false);
       }
    };
    return (
@@ -98,11 +105,13 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
                value={commentText}
                onChange={(e) => setCommentText(e.target.value)}
                placeholder='Add a comment...'
-               className='w-[400px] text-sm p-2 border border-border rounded text-black dark:text-white bg-transparent'
+               disabled={isSubmitting}
+               className='w-[400px] text-sm p-2 border border-[#cdd6f7] rounded text-black dark:text-white bg-transparent'
             />
             <button
                type='submit'
-               className='p-2 border border-border rounded bg-black dark:bg-main text-white dark:text-black -ml-8'
+               disabled={isSubmitting}
+               className='p-2 border border-[#cdd6f7] shadow-sm rounded bg-black dark:bg-[#cdd6f7] text-white dark:text-black -ml-8'
             >
                <IoMdSend />
             </button>

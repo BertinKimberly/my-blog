@@ -20,6 +20,7 @@ export default function CreatePostForm() {
    const [selectedCategory, setSelectedCategory] = useState("");
    const [imageUrl, setImageUrl] = useState("");
    const [publicId, setPublicId] = useState("");
+   const [isSubmitting, setIsSubmitting] = useState(false);
 
    const router = useRouter();
 
@@ -85,6 +86,7 @@ export default function CreatePostForm() {
       }
 
       try {
+         setIsSubmitting(true);
          const res = await fetch("api/posts/", {
             method: "POST",
             headers: {
@@ -108,6 +110,8 @@ export default function CreatePostForm() {
          }
       } catch (error) {
          toast.error("Something went wrong.");
+      } finally {
+         setIsSubmitting(false);
       }
    };
 
@@ -202,7 +206,7 @@ export default function CreatePostForm() {
 
             <select
                onChange={(e) => setSelectedCategory(e.target.value)}
-               className='w-full mt-2 px-6 py-4 text-text bg-main border rounded text-white'
+               className='w-full mt-2 px-6 py-4 text-text bg-[#a9bbff] border rounded text-black'
             >
                <option
                   value=''
@@ -224,8 +228,9 @@ export default function CreatePostForm() {
             <button
                className='bg-[#5B56F421] transition-all hover:bg-transparent hover:text-[#5B56F421] flex-rows gap-4 dark:text-white text-dark p-4 rounded-lg w-full border border-border my-3'
                type='submit'
+               disabled={isSubmitting}
             >
-               Create Post
+               {isSubmitting ? "Creating Post..." : "Create Post"}
             </button>
          </form>
       </div>
