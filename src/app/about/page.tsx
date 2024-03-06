@@ -13,7 +13,7 @@ const About = () => {
             <div className='grid grid-flow-row xl:grid-cols-2 gap-4 xl:gap-16 items-center'>
                <div>
                   <h3 className='text-xl lg:text-3xl mb-4 font-semibold'>
-                     Welcome Glog
+                     Welcome To Glog
                   </h3>
                </div>
                <div className='mt-3 text-sm leading-8 text-text'>

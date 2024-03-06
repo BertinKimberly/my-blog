@@ -109,7 +109,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ postId }) => {
          </form>
 
          {/* Display comments */}
-         {comments.length > 0 ? (
+         {comments?.length > 0 ? (
             comments.map((comment) => (
                <div
                   className='gap-3 flex flex-col p-4 min-w-max'
