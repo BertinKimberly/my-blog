@@ -158,7 +158,7 @@ const Footer = () => {
          </div>
 
          <p className='text-center text-border my-3'>
-            &copy;<span className='mx-2'>2023</span>BERTIN
+            &copy;<span className='mx-2'>2024</span>BERTIN
          </p>
       </div>
    );
